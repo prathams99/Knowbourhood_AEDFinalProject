@@ -29,6 +29,7 @@ public class DoctorDashboard extends javax.swing.JFrame {
      */
     public DoctorDashboard(Doctor d) {
         initComponents();
+        initImage();
     }
 
     /**
@@ -36,6 +37,7 @@ public class DoctorDashboard extends javax.swing.JFrame {
      */
     public DoctorDashboard() {
         initComponents();
+        initImage();
     }
 
     /**
@@ -433,6 +435,41 @@ public class DoctorDashboard extends javax.swing.JFrame {
         lp.setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    private void initImage() {
+        if (d == null) {
+            System.out.println("Please login to continue.");
+            System.exit(0);
+            return;
+        }
+        adminName.setText("Welcome " + d.getName());
+        ImagePanel jPanel1 = new ImagePanel("src/assets/doctor.jpg");
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 300, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        search();
+    }
+    
     /**
      * @param args the command line arguments
      */
