@@ -356,7 +356,20 @@ public class CommAdminReports extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-      
+      ArrayList<Report> reportFound = FileUtils.readReport();
+        int indexFound = -1;
+        for (int i = 0 ; i < reportFound.size(); i++) {
+            if (reportFound.get(i).getMessage().equals(messageTitle.getText())) {
+                indexFound = i;
+            }
+        }
+
+        JOptionPane.showMessageDialog(this, "Deleted report of " +  reportFound.get(indexFound).getName());
+        reportFound.remove(indexFound);
+        FileUtils.writeReport(reportFound);
+        super.dispose();
+        CommAdminReports cd = new CommAdminReports(c);
+        cd.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
