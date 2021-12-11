@@ -5,17 +5,16 @@
  */
 package utils;
 
+import org.bytedeco.javacv.*;
+import org.bytedeco.opencv.opencv_core.IplImage;
 import java.io.File;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
-import org.bytedeco.javacv.Frame;
-import org.bytedeco.javacv.FrameGrabber;
-import org.bytedeco.javacv.OpenCVFrameConverter;
-import org.bytedeco.javacv.OpenCVFrameGrabber;
+import javax.swing.JOptionPane;
+
 import static org.bytedeco.opencv.global.opencv_core.cvFlip;
 import static org.bytedeco.opencv.helper.opencv_imgcodecs.cvSaveImage;
-import org.bytedeco.opencv.opencv_core.IplImage;
 
 /**
  *
@@ -78,6 +77,11 @@ public class Test {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    
+    private void closeWindow() {
+        canvas.setVisible(false);
+        JOptionPane.showMessageDialog(null, "Awesome click! Looking gorgeous as usual!!!");
     }
     
     public static void main(String[] args) {
