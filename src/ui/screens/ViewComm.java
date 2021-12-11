@@ -253,6 +253,32 @@ public class ViewComm extends javax.swing.JFrame {
         searchResident();
     }
     
+    
+    private void searchResident() {
+        String searchEmail = mailSearch.getText();
+        String pattern = "MM-dd-yyyy";
+        DateFormat df = new SimpleDateFormat(pattern);
+        for (int i = 0; i < r.size(); i++) {
+            if (r.get(i).getEmail().equals(searchEmail)) {
+                index = i;
+                break;
+            }
+        }
+        if (index == -1) {
+            JOptionPane.showMessageDialog(this, "Community Admin Not Found!");
+        } else {
+            CommunityAdmin resident = r.get(index);
+            updateUserPanel.setVisible(true);
+            nameInput.setText(resident.getName());
+            contactInput.setText(resident.getContact() + "");
+            mailInput.setText(resident.getEmail());
+            usernameInput.setText(resident.getUsername());
+            dobInput.setText(FileUtils.calculateAge(convertToLocalDateViaInstant(resident.getDob())) + "");
+            communityInput.setText(resident.getCommunityName());
+            JOptionPane.showMessageDialog(this, "Fetched details of " + resident.getName());
+        }
+    }
+    
     private void initImage() {
         updateUserPanel.setVisible(false);
         ImagePanel jPanel1 = new ImagePanel("src/assets/viewcomm.jpg");
