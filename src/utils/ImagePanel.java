@@ -5,6 +5,8 @@
  */
 package utils;
 
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
@@ -20,4 +22,10 @@ public class ImagePanel extends JPanel {
         backImage = new ImageIcon(imageName);
     }
 
+    @Override
+    protected void paintComponent(Graphics g) {
+        BufferedImage scaledImage = getScaledImage();
+        super.paintComponent(g);
+        g.drawImage(scaledImage, 0, 0, null);
+    }
 }
