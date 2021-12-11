@@ -357,7 +357,14 @@ public class CommAdminPostbox extends javax.swing.JFrame {
         });
     }
     
-   
+    private void saveNews() {
+        Date date=java.util.Calendar.getInstance().getTime();
+        News n = new News(subject.getText(), message.getText(), c.getCommunityName(), date, mailId.getText());
+        newsList = FileUtils.readNews();
+        newsList.add(n);
+        FileUtils.writeNews(newsList);
+        JOptionPane.showMessageDialog(this, "Your message has been posted. Thank You.");
+    }
 
     private void initImage() {
         residentName.setText("Welcome " + c.getName());
