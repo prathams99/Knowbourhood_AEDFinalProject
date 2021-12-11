@@ -39,7 +39,7 @@ public class VolunteerDashboard extends javax.swing.JFrame {
         initImage();
         search();
     }
-    
+
     public VolunteerDashboard(Resident r) {
         this.newsList = FileUtils.readHelp();
         this.userNews = new ArrayList<>();
@@ -287,6 +287,11 @@ public class VolunteerDashboard extends javax.swing.JFrame {
 //        
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void sendMail() {
+        FileUtils.sendMail(mailInput.getText(), r.getName() + " wants to volunteer!", "You have got a volunteer for the work: " + workTitle.getText() + ". You can contact " + r.getName() + " for the work. \n\n" + "Contact: " + r.getContact());
+        JOptionPane.showMessageDialog(this, "Your volunteering request has been submitted.", "Requested", JOptionPane.INFORMATION_MESSAGE);
+    }
+
     private void search() {
         index = -1;
         count = 1;
@@ -294,14 +299,14 @@ public class VolunteerDashboard extends javax.swing.JFrame {
         totalEncounters = 0;
         DateFormat dateFormat = new SimpleDateFormat("YYYY-MM-DD");
         Help news;
-        
+
         for (int i = 0; i < newsList.size(); i++) {
-                if (index == -1) {
-                    index = i;
-                }
-                count = i;
-                userNews.add(newsList.get(i));
-                totalEncounters++;
+            if (index == -1) {
+                index = i;
+            }
+            count = i;
+            userNews.add(newsList.get(i));
+            totalEncounters++;
         }
         for (Help e : userNews) {
             System.out.println(e.toString());
@@ -309,7 +314,7 @@ public class VolunteerDashboard extends javax.swing.JFrame {
         if (index == -1) {
             JOptionPane.showMessageDialog(this, "No requests!");
         } else {
-            Help newsNew = userNews.get(currentEncounter);            
+            Help newsNew = userNews.get(currentEncounter);
             workTitle.setText(newsNew.getWorkTitle());
             encounterNumber.setText(1 + " / " + String.valueOf(totalEncounters));
             workDescription.setText(newsNew.getWorkDescription());
@@ -320,7 +325,7 @@ public class VolunteerDashboard extends javax.swing.JFrame {
             paidInput.setText(newsNew.isPaid() ? "Paid" : "Unpaid");
         }
     }
-    
+
     private void initImage() {
         //residentName.setText(r.getName() + " may not necessarily have time, but definitely has a big heart.");
         ImagePanel jPanel1 = new ImagePanel("src/assets/volunteer.jpg");
