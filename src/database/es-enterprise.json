@@ -101,6 +101,24 @@
         "password": "fire@123",
         "email": "firemen5@gmail.com"
       }
+    ],
+    "doctor": [
+      {
+        "name": "Abhishek Kalantri",
+        "hospitalName": "Boston Hospital",
+        "email": "rohitchouhancr07@gmail.com",
+        "username": "doc",
+        "password": "doctor@123",
+        "contact": 8982253353
+      },
+      {
+        "name": "Doctor One",
+        "hospitalName": "Mission hill Hospital",
+        "email": "doctor1@gmail.com",
+        "username": "doc1",
+        "password": "doctor@123",
+        "contact": 8982253355
+      }
     ]
   }
 ]
