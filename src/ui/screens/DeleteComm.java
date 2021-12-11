@@ -286,6 +286,32 @@ public class DeleteComm extends javax.swing.JFrame {
         }
         searchResident();
     }
+    
+     private void searchResident() {
+        String searchEmail = mailSearch.getText();
+        String pattern = "MM-dd-yyyy";
+        DateFormat df = new SimpleDateFormat(pattern);
+        for (int i = 0; i < r.size(); i++) {
+            if (r.get(i).getEmail().equals(searchEmail)) {
+                index = i;
+                break;
+            }
+        }
+        if (index == -1) {
+            JOptionPane.showMessageDialog(this, "Community Admin Not Found!");
+        } else {
+            CommunityAdmin resident = r.get(index);
+            updateUserPanel.setVisible(true);
+            nameInput.setText(resident.getName());
+            dobInput.setText(df.format(resident.getDob()));
+            contactInput.setText(resident.getContact() + "");
+            communityInput.setText(resident.getCommunityName());
+            mailInput.setText(resident.getEmail());
+            usernameInput.setText(resident.getUsername());
+            JOptionPane.showMessageDialog(this, "Fetched details of " + resident.getName());
+        }
+    }
+     
     private void initImage() {
         updateUserPanel.setVisible(false);
         ImagePanel jPanel1 = new ImagePanel("src/assets/deletecomm.jpg");
