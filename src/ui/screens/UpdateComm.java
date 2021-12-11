@@ -303,6 +303,14 @@ public class UpdateComm extends javax.swing.JFrame {
             ad.setVisible(true);
         }
     }
+      private void validateEmail() {
+        if (!FileUtils.validateEmail(mailSearch.getText())) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid email id.");
+            return;
+        }
+        searchResident();
+    }
+      
     private void initImage() {
         updateUserPanel.setVisible(false);
         ImagePanel jPanel1 = new ImagePanel("src/assets/updatecomm.jpg");
