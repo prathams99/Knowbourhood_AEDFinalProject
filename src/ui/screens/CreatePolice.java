@@ -5,6 +5,12 @@
  */
 package ui.screens;
 
+import data.Police;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import utils.FileUtils;
+import utils.ImagePanel;
+
 /**
  *
  * @author viveksharma
@@ -166,6 +172,51 @@ public class CreatePolice extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void validateFields() {
+        
+        if (!FileUtils.validateName(nameInput.getText())) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid name.");
+            return;
+        }
+        if (!FileUtils.validateNumber(contactInput.getText()) || contactInput.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid contact number.");
+            return;
+        }
+        if (!FileUtils.validateEmail(mailInput.getText())) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid mail id.");
+            return;
+        }
+        if (!FileUtils.validateNameNumber(usernameInput.getText())) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid username.");
+            return;
+        }
+        if (!FileUtils.validateNameNumber(passwordInput.getText())) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid password.");
+            return;
+        }
+        createUser();
+        sendMail();
+    }
+    
+    private void createUser() {
+        try {
+            Police p = new Police(nameInput.getText(),Long.parseLong(contactInput.getText()), usernameInput.getText(), passwordInput.getText(), mailInput.getText());
+            ArrayList<Police> policelist = FileUtils.readPolice();
+            policelist.add(p);
+            FileUtils.writePolice(policelist);
+            JOptionPane.showMessageDialog(this, "Policeman has been succesfully added!");
+            super.dispose();
+            PoliceManagement pm = new PoliceManagement();
+            pm.setVisible(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    private void sendMail() {
+        FileUtils.sendMail(mailInput.getText(), "Welcome to Knowbourhood: Set up a new password", "Hello! Your ID is succesfully created and your default password is " + passwordInput.getText() + ". You can create a new password or use the same one. In order to create a new password, click on this link and enter your username and new password. You can log in to the application after setting a new password. If the link is not working, click on the Forget / Reset password button in the application and enter your email ID to continue. \n" + "Username: " + usernameInput.getText() + "\n Password Reset Link: http://localhost:3000/police-" + usernameInput.getText());
+    }
+    
         private void initImage() {
         ImagePanel jPanel1 = new ImagePanel("src/assets/createpolice.jpg");
 
