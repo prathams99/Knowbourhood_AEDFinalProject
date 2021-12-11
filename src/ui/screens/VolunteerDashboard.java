@@ -5,6 +5,13 @@
  */
 package ui.screens;
 
+import data.Help;
+import data.Resident;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import utils.FileUtils;
 import utils.ImagePanel;
 
 /**
@@ -13,13 +20,34 @@ import utils.ImagePanel;
  */
 public class VolunteerDashboard extends javax.swing.JFrame {
 
+    private Resident r;
+    private int currentEncounter;
+    private int index = -1;
+    private int count = -1;
+    private int totalEncounters = 0;
+    private ArrayList<Help> newsList;
+    private ArrayList<Help> userNews;
+
     /**
      * Creates new form VolunteerDashboard
      */
     public VolunteerDashboard() {
+        this.newsList = FileUtils.readHelp();
+        this.userNews = new ArrayList<>();
+        currentEncounter = 0;
         initComponents();
         initImage();
-
+        search();
+    }
+    
+    public VolunteerDashboard(Resident r) {
+        this.newsList = FileUtils.readHelp();
+        this.userNews = new ArrayList<>();
+        currentEncounter = 0;
+        this.r = r;
+        initComponents();
+        initImage();
+        search();
     }
 
     /**
@@ -259,6 +287,40 @@ public class VolunteerDashboard extends javax.swing.JFrame {
 //        
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void search() {
+        index = -1;
+        count = 1;
+        userNews.clear();
+        totalEncounters = 0;
+        DateFormat dateFormat = new SimpleDateFormat("YYYY-MM-DD");
+        Help news;
+        
+        for (int i = 0; i < newsList.size(); i++) {
+                if (index == -1) {
+                    index = i;
+                }
+                count = i;
+                userNews.add(newsList.get(i));
+                totalEncounters++;
+        }
+        for (Help e : userNews) {
+            System.out.println(e.toString());
+        }
+        if (index == -1) {
+            JOptionPane.showMessageDialog(this, "No requests!");
+        } else {
+            Help newsNew = userNews.get(currentEncounter);            
+            workTitle.setText(newsNew.getWorkTitle());
+            encounterNumber.setText(1 + " / " + String.valueOf(totalEncounters));
+            workDescription.setText(newsNew.getWorkDescription());
+            mailInput.setText(newsNew.getEmail());
+            dateInput.setText(newsNew.getDate() + "");
+            contactInput.setText(newsNew.getContact() + "");
+            communityInput.setText(newsNew.getCommunity());
+            paidInput.setText(newsNew.isPaid() ? "Paid" : "Unpaid");
+        }
+    }
+    
     private void initImage() {
         //residentName.setText(r.getName() + " may not necessarily have time, but definitely has a big heart.");
         ImagePanel jPanel1 = new ImagePanel("src/assets/volunteer.jpg");
@@ -287,7 +349,7 @@ public class VolunteerDashboard extends javax.swing.JFrame {
                         .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }
-    
+
     /**
      * @param args the command line arguments
      */
