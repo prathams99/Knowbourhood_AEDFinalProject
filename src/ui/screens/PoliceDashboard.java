@@ -5,17 +5,56 @@
  */
 package ui.screens;
 
+import data.News;
+import data.Police;
+import data.Report;
+import data.Resident;
+import java.util.ArrayList;
+import utils.FileUtils;
+import utils.ImagePanel;
+
 /**
  *
  * @author viveksharma
  */
 public class PoliceDashboard extends javax.swing.JFrame {
     
+    private Police p;
+    private int currentEncounter;
+    private int index = -1;
+    private int count = -1;
+    private int totalEncounters = 0;
+    private ArrayList<Report> newsList;
+    private ArrayList<Report> userNews;
+    private ArrayList<Report> report;
+    private int i;
+    private ArrayList<Resident> r;
+    private ArrayList<News> n;
+    
     /**
      * Creates new form PoliceDashboard
      */
     public PoliceDashboard() {
+        this.newsList = FileUtils.readReport();
+        this.userNews = new ArrayList<>();
+        this.report = new ArrayList<>();
+        this.r = FileUtils.readResidents();
+        this.n = FileUtils.readNews();
+        currentEncounter = 0;
         initComponents();
+        initImage();
+    }
+    
+    public PoliceDashboard(Police police) {
+        this.p = police;
+        this.newsList = FileUtils.readReport();
+        this.userNews = new ArrayList<>();
+        this.report = new ArrayList<>();
+        this.r = FileUtils.readResidents();
+        this.n = FileUtils.readNews();
+        currentEncounter = 0;
+        initComponents();
+        initImage();
     }
 
     /**
@@ -377,6 +416,35 @@ public class PoliceDashboard extends javax.swing.JFrame {
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
 //        
     }//GEN-LAST:event_jButton5ActionPerformed
+    
+    private void initImage() {
+        adminName.setText("Welcome Officer " + p.getName());
+        ImagePanel jPanel1 = new ImagePanel("src/assets/police.jpg");
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 300, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+    }
     
     /**
      * @param args the command line arguments
