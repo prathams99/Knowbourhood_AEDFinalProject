@@ -27,8 +27,10 @@ import java.time.Period;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -261,5 +263,41 @@ public class FileUtils {
     public static void writeHelp(ArrayList<Help> doctorList) {
         Gson g = new GsonBuilder().setPrettyPrinting().create();
         writeFile("src/database/help.json", g.toJson(doctorList));
+    }
+    
+        public static void sendMail(String to, String subject, String email_body) {
+        String username = "knowbourhood@gmail.com";
+        String password = "aedpassword123";
+        doSendMail(username, password, to, subject, email_body);
+    }
+    
+    public static void doSendMail(final String username, final String password, String to, String subject, String email_body) {
+
+        Properties props = new Properties();
+        props.put("mail.smtp.host", "smtp.gmail.com");
+        props.put("mail.smtp.socketFactory.port", "587");
+        props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.port", "587");
+        props.put("mail.smtp.ssl.trust", "smtp.gmail.com");
+
+        Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(username, password);
+            }
+        });
+        try {
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(username));
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
+            message.setSubject(subject);
+            message.setText(email_body);
+            Transport.send(message);
+        } catch (Exception e) {
+            System.out.println(e);
+            JOptionPane.showMessageDialog(null, e.toString());
+        }
     }
 }
