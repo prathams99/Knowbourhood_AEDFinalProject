@@ -43,32 +43,32 @@ import javax.swing.JOptionPane;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-
 /**
  *
  * @author jarvis
  */
 public class FileUtils {
-    
+
     private static final String nameRegex = "^[a-zA-Z ]+$";
-     private static final String numberRegex = "^[0-9.]*$";
-     private static final String nameNumberRegex = "^[a-zA-Z0-9-, ]+$";
-     private static final SimpleDateFormat dateFormat = new SimpleDateFormat("MM-DD-YYYY");
-     
-     private static final SimpleDateFormat formatter3 = new SimpleDateFormat("MM-dd-yyyy"); 
-    
-     public static boolean validateName(String inputName) {
+    private static final String numberRegex = "^[0-9.]*$";
+    private static final String nameNumberRegex = "^[a-zA-Z0-9-, ]+$";
+    private static final SimpleDateFormat dateFormat = new SimpleDateFormat("MM-DD-YYYY");
+
+    private static final SimpleDateFormat formatter3 = new SimpleDateFormat("MM-dd-yyyy");
+
+    public static boolean validateName(String inputName) {
         return inputName.matches(nameRegex);
     }
-     
-     public static boolean validateNumber(String numberInput) {
+
+    public static boolean validateNumber(String numberInput) {
         return numberInput.matches(numberRegex);
     }
-     public static boolean validateNameNumber(String nameNumberInput) {
+
+    public static boolean validateNameNumber(String nameNumberInput) {
         return nameNumberInput.matches(nameNumberRegex);
     }
-     
-      public static boolean isValidDate(String input) {
+
+    public static boolean isValidDate(String input) {
         try {
             dateFormat.parse(input);
             return true;
@@ -76,11 +76,11 @@ public class FileUtils {
             return false;
         }
     }
-      
-      public static Date convertStringToDate(String date) {
+
+    public static Date convertStringToDate(String date) {
         if (date != null) {
             try {
-                Date date3 = formatter3.parse(date);  
+                Date date3 = formatter3.parse(date);
                 return date3;
             } catch (ParseException e) {
                 // nothing we can do if the input is invalid
@@ -89,8 +89,8 @@ public class FileUtils {
         }
         return null;
     }
-      
-      public static int calculateAge(LocalDate birthDate) {
+
+    public static int calculateAge(LocalDate birthDate) {
         LocalDate currentDate = LocalDate.now();
         if ((birthDate != null) && (currentDate != null)) {
             return Period.between(birthDate, currentDate).getYears();
@@ -98,13 +98,13 @@ public class FileUtils {
             return 0;
         }
     }
-    
+
     public LocalDate convertToLocalDateViaInstant(Date dateToConvert) {
         return dateToConvert.toInstant()
                 .atZone(ZoneId.systemDefault())
                 .toLocalDate();
     }
-    
+
     public static String readFile(String filepath) {
         BufferedReader reader = null;
         try {
@@ -139,7 +139,7 @@ public class FileUtils {
             Logger.getLogger(FileUtils.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     public static ArrayList<CommunityAdmin> readCommunityAdmins() {
         Gson g = new Gson();
         String json = FileUtils.readFile("src/database/communityadmins.json");
@@ -151,7 +151,7 @@ public class FileUtils {
         Gson g = new GsonBuilder().setPrettyPrinting().create();
         writeFile("src/database/communityadmins.json", g.toJson(communityAdminList));
     }
-    
+
     public static ArrayList<Fireman> readFiremen() {
         Gson g = new Gson();
         String json = FileUtils.readFile("src/database/firemen.json");
@@ -163,7 +163,7 @@ public class FileUtils {
         Gson g = new GsonBuilder().setPrettyPrinting().create();
         writeFile("src/database/firemen.json", g.toJson(firemenList));
     }
-    
+
     public static ArrayList<Police> readPolice() {
         Gson g = new Gson();
         String json = FileUtils.readFile("src/database/police.json");
@@ -175,7 +175,7 @@ public class FileUtils {
         Gson g = new GsonBuilder().setPrettyPrinting().create();
         writeFile("src/database/police.json", g.toJson(policeList));
     }
-    
+
     public static ArrayList<Resident> readResidents() {
         Gson g = new Gson();
         String json = FileUtils.readFile("src/database/residents.json");
@@ -187,7 +187,7 @@ public class FileUtils {
         Gson g = new GsonBuilder().setPrettyPrinting().create();
         writeFile("src/database/residents.json", g.toJson(residentList));
     }
-    
+
     public static ArrayList<Community> readCommunity() {
         Gson g = new Gson();
         String json = FileUtils.readFile("src/database/community-enterprise.json");
@@ -199,85 +199,85 @@ public class FileUtils {
         Gson g = new GsonBuilder().setPrettyPrinting().create();
         writeFile("src/database/community-enterprise.json", g.toJson(communityList));
     }
-    
+
     public static ArrayList<News> readNews() {
         Gson g = new Gson();
         String json = FileUtils.readFile("src/database/news.json");
         return g.fromJson(json, new TypeToken<ArrayList<News>>() {
         }.getType());
     }
-    
+
     public static void writeNews(ArrayList<News> newsList) {
         Gson g = new GsonBuilder().setPrettyPrinting().create();
         writeFile("src/database/news.json", g.toJson(newsList));
     }
-    
+
     public static ArrayList<Report> readReport() {
         Gson g = new Gson();
         String json = FileUtils.readFile("src/database/reports.json");
         return g.fromJson(json, new TypeToken<ArrayList<Report>>() {
         }.getType());
     }
-    
+
     public static void writeReport(ArrayList<Report> reportList) {
         Gson g = new GsonBuilder().setPrettyPrinting().create();
         writeFile("src/database/reports.json", g.toJson(reportList));
     }
-    
+
     public static ArrayList<Users> readUsers() {
         Gson g = new Gson();
         String json = FileUtils.readFile("src/database/users-enterprise.json");
         return g.fromJson(json, new TypeToken<ArrayList<Users>>() {
         }.getType());
     }
-    
+
     public static void writeUsers(ArrayList<Users> usersList) {
         Gson g = new GsonBuilder().setPrettyPrinting().create();
         writeFile("src/database/users-enterprise.json", g.toJson(usersList));
     }
-    
+
     public static ArrayList<Doctor> readDoctors() {
         Gson g = new Gson();
         String json = FileUtils.readFile("src/database/doctor.json");
         return g.fromJson(json, new TypeToken<ArrayList<Doctor>>() {
         }.getType());
     }
-    
+
     public static void writeDoctors(ArrayList<Doctor> doctorList) {
         Gson g = new GsonBuilder().setPrettyPrinting().create();
         writeFile("src/database/doctor.json", g.toJson(doctorList));
     }
-    
+
     public static ArrayList<EmergencyServices> readEs() {
         Gson g = new Gson();
         String json = FileUtils.readFile("src/database/es-enterprise.json");
         return g.fromJson(json, new TypeToken<ArrayList<EmergencyServices>>() {
         }.getType());
     }
-    
+
     public static void writeEs(ArrayList<EmergencyServices> doctorList) {
         Gson g = new GsonBuilder().setPrettyPrinting().create();
         writeFile("src/database/es-enterprise.json", g.toJson(doctorList));
     }
-    
+
     public static ArrayList<Help> readHelp() {
         Gson g = new Gson();
         String json = FileUtils.readFile("src/database/help.json");
         return g.fromJson(json, new TypeToken<ArrayList<Help>>() {
         }.getType());
     }
-    
+
     public static void writeHelp(ArrayList<Help> doctorList) {
         Gson g = new GsonBuilder().setPrettyPrinting().create();
         writeFile("src/database/help.json", g.toJson(doctorList));
     }
-    
-        public static void sendMail(String to, String subject, String email_body) {
+
+    public static void sendMail(String to, String subject, String email_body) {
         String username = "knowbourhood@gmail.com";
         String password = "aedpassword123";
         doSendMail(username, password, to, subject, email_body);
     }
-    
+
     public static void doSendMail(final String username, final String password, String to, String subject, String email_body) {
 
         Properties props = new Properties();
