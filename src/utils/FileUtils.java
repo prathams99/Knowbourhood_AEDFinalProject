@@ -10,9 +10,14 @@
 public class FileUtils {
     
     private static final String nameRegex = "^[a-zA-Z ]+$";
+     private static final String numberRegex = "^[0-9.]*$";
     
      public static boolean validateName(String inputName) {
         return inputName.matches(nameRegex);
+    }
+     
+     public static boolean validateNumber(String numberInput) {
+        return numberInput.matches(numberRegex);
     }
     
 }
