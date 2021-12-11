@@ -34,5 +34,23 @@
     "username": "ram",
     "password": "ramrocks",
     "email": "comadmin3@gmail.com"
+  },
+  {
+    "name": "Shyam Verma",
+    "dob": "Mar 27, 1980, 12:00:00 AM",
+    "contact": 9594999367,
+    "communityName": "Back Bay",
+    "username": "shyam",
+    "password": "shyamrocks",
+    "email": "comadmin4@gmail.com"
+  },
+  {
+    "name": "Dinesh Verma",
+    "dob": "Jun 27, 1980, 12:00:00 AM",
+    "contact": 9594999369,
+    "communityName": "Brighton",
+    "username": "shyam",
+    "password": "shyamrocks",
+    "email": "comadmin6@gmail.com"
   }
 ]
