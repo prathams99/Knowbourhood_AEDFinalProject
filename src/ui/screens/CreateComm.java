@@ -204,7 +204,37 @@ public class CreateComm extends javax.swing.JFrame {
         dm.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
-   
+     private void validateFields() {
+        if (!FileUtils.validateName(nameInput.getText())) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid name.");
+            return;
+        }
+        if (!FileUtils.isValidDate(dobInput.getText())) {
+            JOptionPane.showMessageDialog(this, "Please enter a Date in the format of MM-DD-YYYY");
+            return;
+        }
+        if (!FileUtils.validateNumber(contactInput.getText()) || contactInput.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid contact number.");
+            return;
+        }
+        if (!FileUtils.validateName(communityInput.getText())) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid community name.");
+            return;
+        }
+        if (!FileUtils.validateEmail(mailInput.getText())) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid mail id.");
+            return;
+        }
+        if (!FileUtils.validateNameNumber(usernameInput.getText())) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid username.");
+            return;
+        }
+        if (!FileUtils.validateNameNumber(passwordInput.getText())) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid password.");
+            return;
+        }
+        createUser();
+    }
     
     private void initImage() {
         ImagePanel jPanel1 = new ImagePanel("src/assets/createcomm.jpg");
