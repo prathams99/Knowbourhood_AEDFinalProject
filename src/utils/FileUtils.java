@@ -2,6 +2,7 @@
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import data.Community;
 import data.CommunityAdmin;
 import data.Fireman;
 import data.Police;
@@ -170,5 +171,17 @@ public class FileUtils {
     public static void writeResidents(ArrayList<Resident> residentList) {
         Gson g = new GsonBuilder().setPrettyPrinting().create();
         writeFile("src/database/residents.json", g.toJson(residentList));
+    }
+    
+    public static ArrayList<Community> readCommunity() {
+        Gson g = new Gson();
+        String json = FileUtils.readFile("src/database/community-enterprise.json");
+        return g.fromJson(json, new TypeToken<ArrayList<Community>>() {
+        }.getType());
+    }
+
+    public static void writeCommunity(ArrayList<Community> communityList) {
+        Gson g = new GsonBuilder().setPrettyPrinting().create();
+        writeFile("src/database/community-enterprise.json", g.toJson(communityList));
     }
 }
