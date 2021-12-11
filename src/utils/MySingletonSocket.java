@@ -13,4 +13,12 @@ import java.net.Socket;
 public class MySingletonSocket {
     
     private static Socket clientSocket;
+    
+    static {
+        try {
+            clientSocket = new MySingletonSocket("localhost", 5500);
+        } catch (Exception e) {
+            System.out.println("Server listening");
+        }
+    }
 }
