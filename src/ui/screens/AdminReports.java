@@ -26,6 +26,7 @@ import javax.swing.JOptionPane;
 /**
  *
  * @author jarvis
+ * @author viveksharma
  */
 public class AdminReports extends javax.swing.JFrame {
 
@@ -437,15 +438,42 @@ public class AdminReports extends javax.swing.JFrame {
     }//GEN-LAST:event_communityTitleActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        
+        String translateString = subjectTitle.getText().replace(" ", "%20");
+        try {
+            // Grab the stored linkedin url from the memory
+            String googleTranslateUrl = "https://translate.google.com/?sl=auto&tl=en&text=" + translateString + "&op=translate";
+            // Consructing the desktop class for opening a new window (Browser Intent)
+            Desktop browserIntent = Desktop.getDesktop();
+            URI uriGoogleTranslate = new URI(googleTranslateUrl);
+            browserIntent.browse(uriGoogleTranslate.resolve(uriGoogleTranslate));
+            } catch (URISyntaxException| IOException ex) {
+        }
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        
+        String translateString = messageTitle.getText().replace(" ", "%20");
+        try {
+            // Grab the stored linkedin url from the memory
+            String googleTranslateUrl = "https://translate.google.com/?sl=auto&tl=en&text=" + translateString + "&op=translate";
+            // Consructing the desktop class for opening a new window (Browser Intent)
+            Desktop browserIntent = Desktop.getDesktop();
+            URI uriGoogleTranslate = new URI(googleTranslateUrl);
+            browserIntent.browse(uriGoogleTranslate.resolve(uriGoogleTranslate));
+            } catch (URISyntaxException| IOException ex) {
+        }
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        
+        String translateString = communityTitle.getText().replace(" ", "%20");
+        try {
+            // Grab the stored linkedin url from the memory
+            String googleTranslateUrl = "https://www.openstreetmap.org/search?query=" + translateString + "%20Boston#map=14/42.3249/-71.0950";
+            // Consructing the desktop class for opening a new window (Browser Intent)
+            Desktop browserIntent = Desktop.getDesktop();
+            URI uriGoogleTranslate = new URI(googleTranslateUrl);
+            browserIntent.browse(uriGoogleTranslate.resolve(uriGoogleTranslate));
+            } catch (URISyntaxException| IOException ex) {
+        }
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
@@ -458,8 +486,103 @@ public class AdminReports extends javax.swing.JFrame {
         ad.setVisible(true);
     }//GEN-LAST:event_jButton9ActionPerformed
 
+    private void sendMailToCommunity() {
+        ArrayList<Resident> res = FileUtils.readResidents();
+        String username = "knowbourhood@gmail.com";
+        String password = "aedpassword123";
+        for (int y = 0; y < res.size(); y++) {
+            if(res.get(y).getCommunity().equals(communityTitle.getText())) {
+                doSendMail(username, password, res.get(y).getEmail(), newsList.get(currentEncounter).getSubject(), newsList.get(currentEncounter).getMessage());
+            }
+        }
+        JOptionPane.showMessageDialog(null, "Message Sent!", "Sent", JOptionPane.INFORMATION_MESSAGE);
+        ArrayList<Report> reportFound = FileUtils.readReport();
+        int indexFound = -1;
+        for (int i = 0 ; i < reportFound.size(); i++) {
+            if (reportFound.get(i).getMessage().equals(messageTitle.getText())) {
+                indexFound = i;
+            }
+        }
+        reportFound.remove(indexFound);
+        FileUtils.writeReport(reportFound);
+        super.dispose();
+        AdminReports cd = new AdminReports();
+        cd.setVisible(true);
+    }
     
-   
+    public void sendMail(String to, String subject, String email_body) {
+        String username = "knowbourhood@gmail.com";
+        String password = "aedpassword123";
+        residents = FileUtils.readResidents();
+        for (int x = 0; x < residents.size(); x++) {
+                residentsFound.add(residents.get(x));
+        }
+        
+        if (to.equals("All")) {
+            for (int i = 0; i < residentsFound.size(); i++) {
+                doSendMail(username, password, residentsFound.get(i).getEmail(), subject, email_body);
+            }
+            JOptionPane.showMessageDialog(null, "Message Sent!", "Sent", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+    
+    public void doSendMail(final String username, final String password, String to, String subject, String email_body) {
+
+        Properties props = new Properties();
+        props.put("mail.smtp.host", "smtp.gmail.com");
+        props.put("mail.smtp.socketFactory.port", "587");
+        props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.port", "587");
+        props.put("mail.smtp.ssl.trust", "smtp.gmail.com");
+
+        Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(username, password);
+            }
+        });
+        try {
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(username));
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
+            message.setSubject(subject);
+            message.setText(email_body);
+            Transport.send(message);
+        } catch (Exception e) {
+            System.out.println(e);
+            JOptionPane.showMessageDialog(null, e.toString());
+        }
+    }
+    
+   private void search() {
+        index = -1;
+        count = 1;
+        userNews.clear();
+        totalEncounters = 0;
+        System.out.println("MKC" + newsList.toString());
+        
+        for (int i = 0; i < newsList.size(); i++) {
+                if (index == -1) {
+                    index = i;
+                }
+                count = i;
+                userNews.add(newsList.get(i));
+                totalEncounters++;
+        }
+        if (index == -1) {
+            JOptionPane.showMessageDialog(this, "Report Not Found!");
+        } else {
+            Report newsNew = userNews.get(currentEncounter);            
+            subjectTitle.setText(newsNew.getSubject());
+            encounterNumber.setText(1 + " / " + String.valueOf(totalEncounters));
+            messageTitle.setText(newsNew.getMessage());
+            nameTitle.setText(newsNew.getName());
+            dateTitle.setText(newsNew.getDate() + "");
+            communityTitle.setText(newsNew.getCommunity());
+        }
+    }
     
     private void initImage() {
         ImagePanel jPanel1 = new ImagePanel("src/assets/love.jpg");
