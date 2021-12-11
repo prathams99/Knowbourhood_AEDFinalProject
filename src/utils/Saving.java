@@ -5,7 +5,10 @@
  */
 package utils;
 
+import java.awt.EventQueue;
 import javax.swing.JWindow;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  *
@@ -17,5 +20,20 @@ public class Saving extends JWindow {
     
     public static void main(String[] args) {
         new LoadingScreen();
-    }    
+    }
+    
+    public Saving() {
+        EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+                } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
+                    ex.printStackTrace();
+                }
+                showSplash();
+
+            }
+        });
+    }
 }
