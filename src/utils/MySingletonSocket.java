@@ -11,7 +11,7 @@ import java.net.Socket;
  *
  * @author viveksharma
  */
-public class MySingletonSocket {
+public class MySingletonSocket extends Socket {
 
     private static Socket clientSocket;
 
