@@ -3,6 +3,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import data.CommunityAdmin;
+import data.Fireman;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -132,5 +133,18 @@ public class FileUtils {
         Gson g = new GsonBuilder().setPrettyPrinting().create();
         writeFile("src/database/communityadmins.json", g.toJson(communityAdminList));
     }
+    
+    public static ArrayList<Fireman> readFiremen() {
+        Gson g = new Gson();
+        String json = FileUtils.readFile("src/database/firemen.json");
+        return g.fromJson(json, new TypeToken<ArrayList<Fireman>>() {
+        }.getType());
+    }
+
+    public static void writeFiremen(ArrayList<Fireman> firemenList) {
+        Gson g = new GsonBuilder().setPrettyPrinting().create();
+        writeFile("src/database/firemen.json", g.toJson(firemenList));
+    }
+    
     
 }
