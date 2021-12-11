@@ -284,7 +284,33 @@ public class CommAdminPostbox extends javax.swing.JFrame {
     }//GEN-LAST:event_messageActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       
+         if (!FileUtils.validateEmail(mailId.getText())) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid e-mail.");
+            return;
+        }
+        if (!FileUtils.validateName(subject.getText())) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid subject.");
+            return;
+        }
+        if (!FileUtils.validateName(message.getText())) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid message.");
+            return;
+        }
+        if (mailId.getText().equals("All")) {
+            for (i = 0; i < r.size(); i++) {
+               if (r.get(i).getCommunity().equals(c.getCommunityName())) {
+                   FileUtils.sendMail(r.get(i).getEmail(), subject.getText(), message.getText());
+               }
+            }
+        } else {
+            for (int x = 0; x < residentList.size(); x++) {
+                if (residentList.get(x).getCommunity().equals(c.getCommunityName())) {
+                    FileUtils.sendMail(mailId.getText(), subject.getText(), message.getText());
+                    break;
+                }
+            }
+        }
+        saveNews();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
