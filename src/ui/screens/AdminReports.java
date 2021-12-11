@@ -464,7 +464,16 @@ public class AdminReports extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        
+        String translateString = communityTitle.getText().replace(" ", "%20");
+        try {
+            // Grab the stored linkedin url from the memory
+            String googleTranslateUrl = "https://www.openstreetmap.org/search?query=" + translateString + "%20Boston#map=14/42.3249/-71.0950";
+            // Consructing the desktop class for opening a new window (Browser Intent)
+            Desktop browserIntent = Desktop.getDesktop();
+            URI uriGoogleTranslate = new URI(googleTranslateUrl);
+            browserIntent.browse(uriGoogleTranslate.resolve(uriGoogleTranslate));
+            } catch (URISyntaxException| IOException ex) {
+        }
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
