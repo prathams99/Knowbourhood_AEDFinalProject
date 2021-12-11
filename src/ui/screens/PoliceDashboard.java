@@ -401,10 +401,36 @@ public class PoliceDashboard extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
 //        
+if (currentEncounter > 0) {
+            currentEncounter--;
+            System.out.println("MINUS" + currentEncounter);
+            Report encounter = userNews.get(currentEncounter);
+            subjectTitle.setText(encounter.getSubject());
+            messageTitle.setText(encounter.getMessage());
+            nameTitle.setText(encounter.getName());
+            communityTitle.setText(encounter.getCommunity());
+            dateTitle.setText(encounter.getDate() + "");
+            encounterNumber.setText(currentEncounter+1 + " / " + String.valueOf(totalEncounters));
+        } else {
+            JOptionPane.showMessageDialog(this, "There are only " + String.valueOf(totalEncounters) + " messages from Residents.");
+        }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 //        
+        if (currentEncounter < userNews.size() - 1) {
+            currentEncounter++;
+            System.out.println("PLUS" + currentEncounter);
+            Report encounter = userNews.get(currentEncounter);
+            subjectTitle.setText(encounter.getSubject());
+            encounterNumber.setText(currentEncounter + 1 + " / " + String.valueOf(totalEncounters));
+            messageTitle.setText(encounter.getMessage());
+            nameTitle.setText(encounter.getName());
+            communityTitle.setText(encounter.getCommunity());
+            dateTitle.setText(encounter.getDate() + "");
+        } else {
+            JOptionPane.showMessageDialog(this, "There are only " + String.valueOf(totalEncounters) + " messages from Residents.");
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void subjectTitleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subjectTitleActionPerformed
@@ -417,17 +443,20 @@ public class PoliceDashboard extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
 //        
+        super.dispose();
+        LoginPanel lp = new LoginPanel();
+        lp.setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void saveNews() {
         ArrayList<News> newsListt = new ArrayList<>();
-        Date date=java.util.Calendar.getInstance().getTime();
+        Date date = java.util.Calendar.getInstance().getTime();
         News n = new News(subject.getText(), message.getText(), "All", date, mailId.getText());
         newsListt = FileUtils.readNews();
         newsListt.add(n);
         FileUtils.writeNews(newsListt);
     }
-    
+
     private void search() {
         index = -1;
         count = 1;
