@@ -14,6 +14,20 @@
         "username": "policenew1",
         "password": "police@123",
         "email": "police1@gmail.com"
+      },
+      {
+        "name": "Police two",
+        "contact": 9826463363,
+        "username": "police2",
+        "password": "police@123",
+        "email": "police2@gmail.com"
+      },
+      {
+        "name": "Police three",
+        "contact": 9826463364,
+        "username": "police3",
+        "password": "police@123",
+        "email": "police3@gmail.com"
       }
     ]
   }
