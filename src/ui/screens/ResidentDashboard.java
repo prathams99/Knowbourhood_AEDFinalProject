@@ -23,12 +23,22 @@ import utils.ImagePanel;
  * @author prath
  */
 public class ResidentDashboard extends javax.swing.JFrame {
+    
+    private Resident r;
+    private int currentEncounter;
+    private int index = -1;
+    private int count = -1;
+    private int totalEncounters = 0;
+    private ArrayList<News> newsList;
+    private ArrayList<News> userNews;
+    private ArrayList<Report> reports;
 
     /**
      * Creates new form ResidentDashboard
      */
     public ResidentDashboard(Resident r) {
         initComponents();
+        initImage();
     }
     
     /**
@@ -405,6 +415,35 @@ public class ResidentDashboard extends javax.swing.JFrame {
         VolunteerDashboard nh = new VolunteerDashboard(r);
         nh.setVisible(true);
     }//GEN-LAST:event_jLabel6MouseClicked
+    
+    private void initImage() {
+        residentName.setText("Welcome " + r.getName());
+        ImagePanel jPanel1 = new ImagePanel("src/assets/announce.jpg");
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 300, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+    }
     
     /**
      * @param args the command line arguments
