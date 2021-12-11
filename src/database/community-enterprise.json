@@ -10,6 +10,26 @@
         "username": "vivek",
         "password": "vivekrocks",
         "email": "sharma.viv@northeastern.edu"
+      },
+      {
+        "name": "Rohit Chouhan",
+        "dob": "Jan 18, 1996, 12:00:00 AM",
+        "contact": 8982253354,
+        "address": "1575 Tremont Street, Boston, MA - 02120",
+        "community": "Roxbury",
+        "username": "rohit",
+        "password": "rohitrocks",
+        "email": "chouhan.ro@northeastern.edu"
+      },
+      {
+        "name": "Prathamesh Sahasrabuddhe",
+        "dob": "Dec 27, 1998, 12:00:00 AM",
+        "contact": 8657298290,
+        "address": "123 Boylston Street, Boston, MA - 02120",
+        "community": "Roxbury",
+        "username": "pms22",
+        "password": "lalala",
+        "email": "prathams220399@gmail.com"
       }
     ]
     }
