@@ -37,6 +37,10 @@ public class ResidentDashboard extends javax.swing.JFrame {
      * Creates new form ResidentDashboard
      */
     public ResidentDashboard(Resident r) {
+        this.r = r;
+        this.newsList = FileUtils.readNews();
+        this.userNews = new ArrayList<>();
+        currentEncounter = 0;
         initComponents();
         initImage();
     }
