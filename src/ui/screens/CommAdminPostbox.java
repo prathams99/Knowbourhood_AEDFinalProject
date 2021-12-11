@@ -42,6 +42,19 @@ public class CommAdminPostbox extends javax.swing.JFrame {
         initComponents();
         initImage();
     }
+    
+     /**
+     * Creates new form CommAdminDashboard
+     */
+    public CommAdminPostbox(CommunityAdmin c) {
+        this.c = c;
+        this.r = FileUtils.readResidents();
+        this.n = FileUtils.readNews();
+        initComponents();
+        initImage();
+        fillData();
+        fillNews();
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
