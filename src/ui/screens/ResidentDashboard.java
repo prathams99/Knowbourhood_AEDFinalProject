@@ -421,6 +421,17 @@ public class ResidentDashboard extends javax.swing.JFrame {
         nh.setVisible(true);
     }//GEN-LAST:event_jLabel6MouseClicked
     
+    private void report() {
+        Date date=java.util.Calendar.getInstance().getTime();
+        Report report = new Report(r.getName(), subjectTitle1.getText(), messageTitle1.getText(), r.getCommunity(), date, r.getContact(), r.getEmail());
+        reports = FileUtils.readReport();
+        reports.add(report);
+        FileUtils.writeReport(reports);
+        subjectTitle1.setText("");
+        messageTitle1.setText("");
+        JOptionPane.showMessageDialog(this, "Your report has been posted. Admins will verify and do the needful. Thank You.");
+    }
+    
     private void search() {
         index = -1;
         count = 1;
