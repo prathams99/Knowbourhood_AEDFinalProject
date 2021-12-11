@@ -1,6 +1,6 @@
 [
-  {
-    "r": [
+    {
+"r": [
       {
         "name": "Vivek Sharma ",
         "dob": "Dec 27, 1998, 12:00:00 AM",
@@ -102,65 +102,7 @@
         "email": "ronaldo@abc.com"
       }
     ],
-    "p": [
-      {
-        "name": "Bajirao Singham",
-        "contact": 9826463361,
-        "username": "singham",
-        "password": "singham@123",
-        "email": "prathams220399@gmail.com"
-      },
-      {
-        "name": "Police One",
-        "contact": 9826463362,
-        "username": "policenew1",
-        "password": "police@123",
-        "email": "police1@gmail.com"
-      },
-      {
-        "name": "Police two",
-        "contact": 9826463363,
-        "username": "police2",
-        "password": "police@123",
-        "email": "police2@gmail.com"
-      },
-      {
-        "name": "Police three",
-        "contact": 9826463364,
-        "username": "police3",
-        "password": "police@123",
-        "email": "police3@gmail.com"
-      },
-      {
-        "name": "Police four",
-        "contact": 9826463365,
-        "username": "police4",
-        "password": "police@123",
-        "email": "police4@gmail.com"
-      },
-      {
-        "name": "Police five",
-        "contact": 9826463366,
-        "username": "police5",
-        "password": "police@123",
-        "email": "police5@gmail.com"
-      },
-      {
-        "name": "Test",
-        "contact": 1234567891,
-        "username": "vivek180",
-        "password": "vivekrocks",
-        "email": "sharma.viv@northeastern.edu"
-      },
-      {
-        "name": "vivek sharma",
-        "contact": 9102831991,
-        "username": "vivek1",
-        "password": "vivekrocks",
-        "email": "sharma.viv@northeastern.edu"
-      }
-    ],
-    "c": [
+    "ca": [
       {
         "name": "Mahesh Sahasrabuddhe",
         "dob": "Dec 27, 1998, 12:00:00 AM",
@@ -233,50 +175,6 @@
         "password": "bhaveshrocks",
         "email": "comadmin8@gmail.com"
       }
-    ],
-    "f": [
-      {
-        "name": "John Doe",
-        "contact": 9876543209,
-        "username": "firemen",
-        "password": "fire@123",
-        "email": "rohitchauhancr07@gmail.com"
-      },
-      {
-        "name": "Firemen One",
-        "contact": 9876543211,
-        "username": "firemen1",
-        "password": "fire@123",
-        "email": "firemen1@gmail.com"
-      },
-      {
-        "name": "Firemen two",
-        "contact": 9876543212,
-        "username": "firemen2",
-        "password": "fire@123",
-        "email": "firemen2@gmail.com"
-      },
-      {
-        "name": "Firemen three",
-        "contact": 9876543213,
-        "username": "firemen3",
-        "password": "fire@123",
-        "email": "firemen3@gmail.com"
-      },
-      {
-        "name": "Firemen four",
-        "contact": 9876543214,
-        "username": "firemen4",
-        "password": "fire@123",
-        "email": "firemen4@gmail.com"
-      },
-      {
-        "name": "Firemen five",
-        "contact": 9876543215,
-        "username": "firemennew5",
-        "password": "fire@123",
-        "email": "firemen5@gmail.com"
-      }
     ]
-  }
+    }
 ]
