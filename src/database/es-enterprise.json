@@ -57,6 +57,22 @@
         "password": "vivekrocks",
         "email": "sharma.viv@northeastern.edu"
       }
+    ],
+    "fireman": [
+      {
+        "name": "John Doe",
+        "contact": 9876543209,
+        "username": "firemen",
+        "password": "fire@123",
+        "email": "rohitchauhancr07@gmail.com"
+      },
+      {
+        "name": "Firemen One",
+        "contact": 9876543211,
+        "username": "firemen1",
+        "password": "fire@123",
+        "email": "firemen1@gmail.com"
+      }
     ]
   }
 ]
