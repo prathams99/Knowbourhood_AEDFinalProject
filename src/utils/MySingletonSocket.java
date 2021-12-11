@@ -21,4 +21,8 @@ public class MySingletonSocket {
             System.out.println("Server listening");
         }
     }
+    
+    private MySingletonSocket(final String address, final int port) throws IOException {
+        super(address, port);
+    }
 }
