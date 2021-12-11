@@ -33,7 +33,7 @@ public class CreatePolice extends javax.swing.JFrame {
      */
     public CreatePolice() {
         initComponents();
-        initImage();
+        initImage(); // init image class.
     }
 
     /**
@@ -184,7 +184,7 @@ public class CreatePolice extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void validateFields() {
+    private void validateFields() { // creating function to validate fields 
 
         if (!FileUtils.validateName(nameInput.getText())) {
             JOptionPane.showMessageDialog(this, "Please enter a valid name.");
@@ -210,7 +210,7 @@ public class CreatePolice extends javax.swing.JFrame {
         sendMail();
     }
 
-    private void createUser() {
+    private void createUser() { // create user function to create new policeman 
         try {
             Police p = new Police(nameInput.getText(), Long.parseLong(contactInput.getText()), usernameInput.getText(), passwordInput.getText(), mailInput.getText());
             ArrayList<Police> policelist = FileUtils.readPolice();
@@ -225,11 +225,11 @@ public class CreatePolice extends javax.swing.JFrame {
         }
     }
 
-    private void sendMail() {
+    private void sendMail() { // function to send mail.
         FileUtils.sendMail(mailInput.getText(), "Welcome to Knowbourhood: Set up a new password", "Hello! Your ID is succesfully created and your default password is " + passwordInput.getText() + ". You can create a new password or use the same one. In order to create a new password, click on this link and enter your username and new password. You can log in to the application after setting a new password. If the link is not working, click on the Forget / Reset password button in the application and enter your email ID to continue. \n" + "Username: " + usernameInput.getText() + "\n Password Reset Link: http://localhost:3000/police-" + usernameInput.getText());
     }
 
-    private void initImage() {
+    private void initImage() { // init image function imported
         ImagePanel jPanel1 = new ImagePanel("src/assets/createpolice.jpg");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
