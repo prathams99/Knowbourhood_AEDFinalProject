@@ -235,6 +235,21 @@ public class CreateComm extends javax.swing.JFrame {
         }
         createUser();
     }
+     
+     private void createUser() {
+        try {
+            CommunityAdmin r = new CommunityAdmin(nameInput.getText(), FileUtils.convertStringToDate(dobInput.getText()), Long.parseLong(contactInput.getText()), communityInput.getText(), usernameInput.getText(), passwordInput.getText(), mailInput.getText());
+            ArrayList<CommunityAdmin> residentsList = FileUtils.readCommunityAdmins();
+            residentsList.add(r);
+            FileUtils.writeCommunityAdmins(residentsList);
+            JOptionPane.showMessageDialog(this, "Community Admin has been succesfully added!");
+            super.dispose();
+            CommAdminManagement ad = new CommAdminManagement();
+            ad.setVisible(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     
     private void initImage() {
         ImagePanel jPanel1 = new ImagePanel("src/assets/createcomm.jpg");
