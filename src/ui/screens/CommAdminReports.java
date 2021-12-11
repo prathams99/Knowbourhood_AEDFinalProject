@@ -378,7 +378,23 @@ public class CommAdminReports extends javax.swing.JFrame {
         ad.setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
 
-    
+    public void sendMail(String to, String subject, String email_body) {
+        String username = "knowbourhood@gmail.com";
+        String password = "aedpassword123";
+        residents = FileUtils.readResidents();
+        for (int x = 0; x < residents.size(); x++) {
+            if (residents.get(x).getCommunity().equals(c.getCommunityName())) {
+                residentsFound.add(residents.get(x));
+            }
+        }
+        
+        if (to.equals("All")) {
+            for (int i = 0; i < residentsFound.size(); i++) {
+                doSendMail(username, password, residentsFound.get(i).getEmail(), subject, email_body);
+            }
+            JOptionPane.showMessageDialog(null, "Message Sent!", "Sent", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
     
     private void initImage() {
         adminName.setText("Welcome " + c.getName());
