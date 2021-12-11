@@ -372,7 +372,39 @@ public class CommAdminPostbox extends javax.swing.JFrame {
                 .atZone(ZoneId.systemDefault())
                 .toLocalDate();
     }
+    
+    private void fillData() {
+        DefaultTableModel dtm = (DefaultTableModel) residentTable.getModel();
+        dtm.setRowCount(0);
 
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+        residentTable.setDefaultRenderer(String.class, centerRenderer);
+
+        DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) residentTable.getTableHeader().getDefaultRenderer();
+        renderer.setHorizontalAlignment(0);
+        DateFormat dateFormat = new SimpleDateFormat("MM-DD-YYYY");
+
+        for (int x = 0; x < residentTable.getColumnCount(); x++) {
+            residentTable.getColumnModel().getColumn(x).setCellRenderer(centerRenderer);
+        }
+
+        for (int i = 0; i < r.size(); i++) {
+            if (r.get(i).getCommunity().equals(c.getCommunityName())) {
+                residentList.add(r.get(i));
+                System.out.println(residentList.toString());
+                Object[] row = new Object[dtm.getColumnCount()];
+                row[0] = r.get(i).getName();
+                row[1] = r.get(i).getContact();
+                row[2] = r.get(i).getAddress();
+                row[3] = FileUtils.calculateAge(convertToLocalDateViaInstant(r.get(i).getDob()));
+                row[4] = r.get(i).getEmail();
+                row[5] = r.get(i).getUsername();
+
+                dtm.addRow(row);
+            }
+        }
+    }
 
     private void initImage() {
         residentName.setText("Welcome " + c.getName());
