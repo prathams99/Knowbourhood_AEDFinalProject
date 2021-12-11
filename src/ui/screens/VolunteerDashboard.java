@@ -353,7 +353,6 @@ public class VolunteerDashboard extends javax.swing.JFrame {
     }
 
     private void initImage() {
-        //residentName.setText(r.getName() + " may not necessarily have time, but definitely has a big heart.");
         ImagePanel jPanel1 = new ImagePanel("src/assets/volunteer.jpg");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
