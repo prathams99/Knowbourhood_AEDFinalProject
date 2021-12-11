@@ -21,7 +21,7 @@ import utils.ImagePanel;
  * @author jarvis
  */
 public class UpdateComm extends javax.swing.JFrame {
-    
+
     private ArrayList<CommunityAdmin> r;
     private int index = -1;
 
@@ -258,8 +258,85 @@ public class UpdateComm extends javax.swing.JFrame {
         dm.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    
-    
+    private void validateFields() {
+        if (!FileUtils.validateName(nameInput.getText())) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid name.");
+            return;
+        }
+        if (!FileUtils.isValidDate(dobInput.getText())) {
+            JOptionPane.showMessageDialog(this, "Please enter a Date in the format of MM-DD-YYYY");
+            return;
+        }
+        if (!FileUtils.validateNumber(contactInput.getText()) || contactInput.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid contact number.");
+            return;
+        }
+        if (!FileUtils.validateName(communityInput.getText())) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid community name.");
+            return;
+        }
+        if (!FileUtils.validateEmail(mailInput.getText())) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid mail id.");
+            return;
+        }
+        if (!FileUtils.validateNameNumber(usernameInput.getText())) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid username.");
+            return;
+        }
+        updateUser();
+    }
+
+    private void updateUser() {
+        if (index != -1) {
+            CommunityAdmin resident = r.get(index);
+            resident.setName(nameInput.getText());
+            resident.setContact(Long.parseLong(contactInput.getText()));
+            resident.setCommunityName(communityInput.getText());
+            resident.setDob(FileUtils.convertStringToDate(dobInput.getText()));
+            resident.setEmail(mailInput.getText());
+            resident.setUsername(usernameInput.getText());
+            r.set(index, resident);
+            FileUtils.writeCommunityAdmins(r);
+            JOptionPane.showMessageDialog(this, "Updated Succesfully.");
+            super.dispose();
+            CommAdminManagement ad = new CommAdminManagement();
+            ad.setVisible(true);
+        }
+    }
+
+    private void validateEmail() {
+        if (!FileUtils.validateEmail(mailSearch.getText())) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid email id.");
+            return;
+        }
+        searchResident();
+    }
+
+    private void searchResident() {
+        String searchEmail = mailSearch.getText();
+        String pattern = "MM-dd-yyyy";
+        DateFormat df = new SimpleDateFormat(pattern);
+        for (int i = 0; i < r.size(); i++) {
+            if (r.get(i).getEmail().equals(searchEmail)) {
+                index = i;
+                break;
+            }
+        }
+        if (index == -1) {
+            JOptionPane.showMessageDialog(this, "Community Admin Not Found!");
+        } else {
+            CommunityAdmin resident = r.get(index);
+            updateUserPanel.setVisible(true);
+            nameInput.setText(resident.getName());
+            dobInput.setText(df.format(resident.getDob()));
+            contactInput.setText(resident.getContact() + "");
+            communityInput.setText(resident.getCommunityName());
+            mailInput.setText(resident.getEmail());
+            usernameInput.setText(resident.getUsername());
+            JOptionPane.showMessageDialog(this, "Fetched details of " + resident.getName());
+        }
+    }
+
     private void initImage() {
         updateUserPanel.setVisible(false);
         ImagePanel jPanel1 = new ImagePanel("src/assets/updatecomm.jpg");
@@ -287,7 +364,7 @@ public class UpdateComm extends javax.swing.JFrame {
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        
+
         contactInput.addKeyListener(new KeyAdapter() {
             public void keyTyped(KeyEvent e) {
                 if (contactInput.getText().length() >= 10) // limit textfield to 4 characters
@@ -297,7 +374,7 @@ public class UpdateComm extends javax.swing.JFrame {
             }
         });
     }
-    
+
     /**
      * @param args the command line arguments
      */
