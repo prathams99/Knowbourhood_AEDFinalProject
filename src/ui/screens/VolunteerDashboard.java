@@ -276,15 +276,41 @@ public class VolunteerDashboard extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-//       
+        if (currentEncounter > 0) {
+            currentEncounter--;
+            Help encounter = userNews.get(currentEncounter);
+            workTitle.setText(encounter.getWorkTitle());
+            workDescription.setText(encounter.getWorkDescription());
+            mailInput.setText(encounter.getEmail());
+            dateInput.setText(encounter.getDate() + "");
+            contactInput.setText(encounter.getContact() + "");
+            communityInput.setText(encounter.getCommunity());
+            paidInput.setText(encounter.isPaid() ? "Paid" : "Unpaid");
+            encounterNumber.setText(currentEncounter + 1 + " / " + String.valueOf(totalEncounters));
+        } else {
+            JOptionPane.showMessageDialog(this, "There are only " + String.valueOf(totalEncounters) + " messages for " + r.getName());
+        }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-//        
+        if (currentEncounter < userNews.size() - 1) {
+            currentEncounter++;
+            Help encounter = userNews.get(currentEncounter);
+            workTitle.setText(encounter.getWorkTitle());
+            workDescription.setText(encounter.getWorkDescription());
+            mailInput.setText(encounter.getEmail());
+            dateInput.setText(encounter.getDate() + "");
+            contactInput.setText(encounter.getContact() + "");
+            communityInput.setText(encounter.getCommunity());
+            paidInput.setText(encounter.isPaid() ? "Paid" : "Unpaid");
+            encounterNumber.setText(currentEncounter + 1 + " / " + String.valueOf(totalEncounters));
+        } else {
+            JOptionPane.showMessageDialog(this, "There are only " + String.valueOf(totalEncounters) + " messages for " + r.getName());
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-//        
+        sendMail();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void sendMail() {
