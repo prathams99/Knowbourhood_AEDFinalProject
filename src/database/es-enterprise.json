@@ -42,6 +42,20 @@
         "username": "police5",
         "password": "police@123",
         "email": "police5@gmail.com"
+      },
+      {
+        "name": "Test",
+        "contact": 1234567891,
+        "username": "vivek180",
+        "password": "vivekrocks",
+        "email": "sharma.viv@northeastern.edu"
+      },
+      {
+        "name": "vivek sharma",
+        "contact": 9102831991,
+        "username": "vivek1",
+        "password": "vivekrocks",
+        "email": "sharma.viv@northeastern.edu"
       }
     ]
   }
