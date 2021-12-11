@@ -451,7 +451,28 @@ public class DoctorDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_messageActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
+        if (!FileUtils.validateEmail(mailId.getText())) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid e-mail.");
+            return;
+        }
+        if (!FileUtils.validateName(subject.getText())) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid subject.");
+            return;
+        }
+        if (!FileUtils.validateName(message.getText())) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid message.");
+            return;
+        }
+        if (mailId.getText().equals("All")) {
+            for (i = 0; i < r.size(); i++) {
+                FileUtils.sendMail(r.get(i).getEmail(), subject.getText(), message.getText());
+            }
+            JOptionPane.showMessageDialog(this, "Your message has been posted. Thank You.");
+        } else {
+            FileUtils.sendMail(mailId.getText(), subject.getText(), message.getText());
+            JOptionPane.showMessageDialog(this, "Your message has been posted. Thank You.");
+        }
+        saveNews();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void contactTitleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contactTitleActionPerformed
@@ -464,6 +485,15 @@ public class DoctorDashboard extends javax.swing.JFrame {
         lp.setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    private void saveNews() {
+        ArrayList<News> newsListt = new ArrayList<>();
+        Date date=java.util.Calendar.getInstance().getTime();
+        News n = new News(subject.getText(), message.getText(), "All", date, mailId.getText());
+        newsListt = FileUtils.readNews();
+        newsListt.add(n);
+        FileUtils.writeNews(newsListt);
+    }
+    
     private void search() {
         index = -1;
         count = 1;
