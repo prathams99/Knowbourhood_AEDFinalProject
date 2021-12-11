@@ -12,7 +12,7 @@ import java.util.Date;
  */
 public class News {
     
-     private String subject;
+    private String subject;
     private String message;
     private String community;
     private Date date;
