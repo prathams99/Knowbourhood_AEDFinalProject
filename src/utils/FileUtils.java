@@ -1,4 +1,8 @@
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
+import data.CommunityAdmin;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -11,6 +15,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -114,6 +119,18 @@ public class FileUtils {
         } catch (IOException ex) {
             Logger.getLogger(FileUtils.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    public static ArrayList<CommunityAdmin> readCommunityAdmins() {
+        Gson g = new Gson();
+        String json = FileUtils.readFile("src/database/communityadmins.json");
+        return g.fromJson(json, new TypeToken<ArrayList<CommunityAdmin>>() {
+        }.getType());
+    }
+
+    public static void writeCommunityAdmins(ArrayList<CommunityAdmin> communityAdminList) {
+        Gson g = new GsonBuilder().setPrettyPrinting().create();
+        writeFile("src/database/communityadmins.json", g.toJson(communityAdminList));
     }
     
 }
