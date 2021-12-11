@@ -40,7 +40,8 @@ public class AdminPostbox extends javax.swing.JFrame {
         this.n = FileUtils.readNews();
         initComponents();
         initImage();
-        
+        fillData();
+        fillNews();
     }
 
     /**
@@ -298,7 +299,16 @@ public class AdminPostbox extends javax.swing.JFrame {
         AdminDashboard ad = new AdminDashboard();
         ad.setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
-
+    
+     private void saveNews() {
+        Date date=java.util.Calendar.getInstance().getTime();
+        News n = new News(subject.getText(), message.getText(), "All", date, mailId.getText());
+        newsList = FileUtils.readNews();
+        newsList.add(n);
+        FileUtils.writeNews(newsList);
+        JOptionPane.showMessageDialog(this, "Your message has been posted. Thank You.");
+    }
+     
     private void initImage() {
         ImagePanel jPanel1 = new ImagePanel("src/assets/adminpostbox.jpg");
 
