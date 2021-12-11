@@ -10,6 +10,7 @@ import data.Police;
 import data.Report;
 import data.Resident;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import utils.FileUtils;
 import utils.ImagePanel;
@@ -418,6 +419,15 @@ public class PoliceDashboard extends javax.swing.JFrame {
 //        
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    private void saveNews() {
+        ArrayList<News> newsListt = new ArrayList<>();
+        Date date=java.util.Calendar.getInstance().getTime();
+        News n = new News(subject.getText(), message.getText(), "All", date, mailId.getText());
+        newsListt = FileUtils.readNews();
+        newsListt.add(n);
+        FileUtils.writeNews(newsListt);
+    }
+    
     private void search() {
         index = -1;
         count = 1;
