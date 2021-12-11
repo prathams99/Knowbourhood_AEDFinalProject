@@ -1,0 +1,20 @@
+[
+  {
+    "police": [
+      {
+        "name": "Bajirao Singham",
+        "contact": 9826463361,
+        "username": "singham",
+        "password": "singham@123",
+        "email": "prathams220399@gmail.com"
+      },
+      {
+        "name": "Police One",
+        "contact": 9826463362,
+        "username": "policenew1",
+        "password": "police@123",
+        "email": "police1@gmail.com"
+      }
+    ]
+  }
+]
