@@ -11,6 +11,7 @@ public class FileUtils {
     
     private static final String nameRegex = "^[a-zA-Z ]+$";
      private static final String numberRegex = "^[0-9.]*$";
+     private static final String nameNumberRegex = "^[a-zA-Z0-9-, ]+$";
     
      public static boolean validateName(String inputName) {
         return inputName.matches(nameRegex);
@@ -18,6 +19,9 @@ public class FileUtils {
      
      public static boolean validateNumber(String numberInput) {
         return numberInput.matches(numberRegex);
+    }
+     public static boolean validateNameNumber(String nameNumberInput) {
+        return nameNumberInput.matches(nameNumberRegex);
     }
     
 }
