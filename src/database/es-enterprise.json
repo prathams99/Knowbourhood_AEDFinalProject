@@ -118,6 +118,54 @@
         "username": "doc1",
         "password": "doctor@123",
         "contact": 8982253355
+      },
+      {
+        "name": "Doctor two",
+        "hospitalName": "Mission hill Hospital",
+        "email": "doctor2@gmail.com",
+        "username": "doc2",
+        "password": "doctor@123",
+        "contact": 8982253356
+      },
+      {
+        "name": "Doctor three",
+        "hospitalName": "Mission hill Hospital",
+        "email": "doctor3@gmail.com",
+        "username": "doc3",
+        "password": "doctor@123",
+        "contact": 8982253357
+      },
+      {
+        "name": "Doctor four",
+        "hospitalName": "Mission hill Hospital",
+        "email": "doctor4@gmail.com",
+        "username": "doc4",
+        "password": "doctor@123",
+        "contact": 8982253358
+      },
+      {
+        "name": "Doctor five",
+        "hospitalName": "Mission hill Hospital",
+        "email": "doctor5@gmail.com",
+        "username": "doc5",
+        "password": "doctor@123",
+        "contact": 8982253359
+      },
+      {
+        "name": "Doctor six",
+        "hospitalName": "Mission hill Hospital",
+        "email": "doctor6@gmail.com",
+        "username": "doc6",
+        "password": "doctor@123",
+        "contact": 8982253360
+      },
+      {
+        "name": "Doctor seven",
+        "hospitalName": "Mission hill Hospital",
+        "email": "doctor7@gmail.com",
+        "username": "doc7",
+        "password": "doctor@123",
+        "contact": 8982253361
       }
     ]
   }
