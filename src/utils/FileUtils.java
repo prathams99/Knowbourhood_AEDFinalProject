@@ -265,6 +265,12 @@ public class FileUtils {
         writeFile("src/database/help.json", g.toJson(doctorList));
     }
     
+        public static void sendMail(String to, String subject, String email_body) {
+        String username = "knowbourhood@gmail.com";
+        String password = "aedpassword123";
+        doSendMail(username, password, to, subject, email_body);
+    }
+    
     public static void doSendMail(final String username, final String password, String to, String subject, String email_body) {
 
         Properties props = new Properties();
