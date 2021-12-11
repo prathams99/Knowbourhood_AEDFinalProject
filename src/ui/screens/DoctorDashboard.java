@@ -24,10 +24,34 @@ import utils.ImagePanel;
  */
 public class DoctorDashboard extends javax.swing.JFrame {
     
+    private Doctor d;
+    private int currentEncounter;
+    private int index = -1;
+    private int count = -1;
+    private int totalEncounters = 0;
+    private ArrayList<Report> newsList;
+    private ArrayList<Report> userNews;
+    private ArrayList<Report> report;
+    private int i;
+    private ArrayList<Resident> r;
+    private ArrayList<News> n;
+    
     /**
      * Creates new form DoctorDashboard
      */
     public DoctorDashboard(Doctor d) {
+        if (d == null) {
+            System.out.println("Please login to continue.");
+            System.exit(0);
+            return;
+        }
+        this.d = d;
+        this.newsList = FileUtils.readReport();
+        this.userNews = new ArrayList<>();
+        this.report = new ArrayList<>();
+        this.r = FileUtils.readResidents();
+        this.n = FileUtils.readNews();
+        currentEncounter = 0;
         initComponents();
         initImage();
     }
@@ -36,6 +60,11 @@ public class DoctorDashboard extends javax.swing.JFrame {
      * Creates new form DoctorDashboard
      */
     public DoctorDashboard() {
+        if (d == null) {
+            System.out.println("Please login to continue.");
+            System.exit(0);
+            return;
+        }
         initComponents();
         initImage();
     }
@@ -435,6 +464,50 @@ public class DoctorDashboard extends javax.swing.JFrame {
         lp.setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    private void search() {
+        index = -1;
+        count = 1;
+        userNews.clear();
+        totalEncounters = 0;
+        List<String> list = new ArrayList<>();
+        list.add("Doctor");
+        list.add("doctor");
+        list.add("Blood");
+        list.add("blood");
+        list.add("Emergency");
+        list.add("emergency");
+        list.add("Ambulance");
+        list.add("ambulance");
+        list.add("medical");
+        list.add("Medical");
+        list.add("Hospital");
+        list.add("hospital");
+        String regex = ".*(?:" + String.join("|", list) + ").*";
+        
+        for (int i = 0; i < newsList.size(); i++) {
+            if (newsList.get(i).getMessage().matches(regex) || newsList.get(i).getSubject().matches(regex)) {
+                if (index == -1) {
+                    index = i;
+                }
+                count = i;
+                userNews.add(newsList.get(i));
+                totalEncounters++;
+            }
+        }
+        if (index == -1) {
+            JOptionPane.showMessageDialog(this, "Report Not Found!");
+        } else {
+            Report newsNew = userNews.get(currentEncounter);            
+            subjectTitle.setText(newsNew.getSubject());
+            encounterNumber.setText(1 + " / " + String.valueOf(totalEncounters));
+            messageTitle.setText(newsNew.getMessage());
+            nameTitle.setText(newsNew.getName());
+            contactTitle.setText(newsNew.getContact() + "");
+            communityTitle.setText(newsNew.getCommunity());
+            dateTitle.setText(newsNew.getDate() + "");
+        }
+    }
+    
     private void initImage() {
         if (d == null) {
             System.out.println("Please login to continue.");
