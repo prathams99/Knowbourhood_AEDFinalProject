@@ -5,6 +5,7 @@ import com.google.gson.reflect.TypeToken;
 import data.Community;
 import data.CommunityAdmin;
 import data.Doctor;
+import data.EmergencyServices;
 import data.Fireman;
 import data.News;
 import data.Police;
@@ -235,5 +236,17 @@ public class FileUtils {
     public static void writeDoctors(ArrayList<Doctor> doctorList) {
         Gson g = new GsonBuilder().setPrettyPrinting().create();
         writeFile("src/database/doctor.json", g.toJson(doctorList));
+    }
+    
+    public static ArrayList<EmergencyServices> readEs() {
+        Gson g = new Gson();
+        String json = FileUtils.readFile("src/database/es-enterprise.json");
+        return g.fromJson(json, new TypeToken<ArrayList<EmergencyServices>>() {
+        }.getType());
+    }
+    
+    public static void writeEs(ArrayList<EmergencyServices> doctorList) {
+        Gson g = new GsonBuilder().setPrettyPrinting().create();
+        writeFile("src/database/es-enterprise.json", g.toJson(doctorList));
     }
 }
