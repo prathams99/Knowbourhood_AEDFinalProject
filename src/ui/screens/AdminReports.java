@@ -26,6 +26,7 @@ import javax.swing.JOptionPane;
 /**
  *
  * @author jarvis
+ * @author viveksharma
  */
 public class AdminReports extends javax.swing.JFrame {
 
@@ -458,6 +459,29 @@ public class AdminReports extends javax.swing.JFrame {
         ad.setVisible(true);
     }//GEN-LAST:event_jButton9ActionPerformed
 
+    private void sendMailToCommunity() {
+        ArrayList<Resident> res = FileUtils.readResidents();
+        String username = "knowbourhood@gmail.com";
+        String password = "aedpassword123";
+        for (int y = 0; y < res.size(); y++) {
+            if(res.get(y).getCommunity().equals(communityTitle.getText())) {
+                doSendMail(username, password, res.get(y).getEmail(), newsList.get(currentEncounter).getSubject(), newsList.get(currentEncounter).getMessage());
+            }
+        }
+        JOptionPane.showMessageDialog(null, "Message Sent!", "Sent", JOptionPane.INFORMATION_MESSAGE);
+        ArrayList<Report> reportFound = FileUtils.readReport();
+        int indexFound = -1;
+        for (int i = 0 ; i < reportFound.size(); i++) {
+            if (reportFound.get(i).getMessage().equals(messageTitle.getText())) {
+                indexFound = i;
+            }
+        }
+        reportFound.remove(indexFound);
+        FileUtils.writeReport(reportFound);
+        super.dispose();
+        AdminReports cd = new AdminReports();
+        cd.setVisible(true);
+    }
     
    private void search() {
         index = -1;
