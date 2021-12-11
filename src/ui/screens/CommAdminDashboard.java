@@ -8,25 +8,23 @@ package ui.screens;
 import data.CommunityAdmin;
 import utils.ImagePanel;
 
-
-
 /**
  *
  * @author jarvis
  */
 public class CommAdminDashboard extends javax.swing.JFrame {
-    
+
     private CommunityAdmin c;
-    
+
     /**
      * Creates new form CommAdminDashboard
      */
     public CommAdminDashboard() {
         initComponents();
-        initImage();       
+        initImage();
     }
-    
-     /**
+
+    /**
      * Creates new form CommAdminDashboard
      */
     public CommAdminDashboard(CommunityAdmin c) {
@@ -119,17 +117,23 @@ public class CommAdminDashboard extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       
+        super.dispose();
+        CommAdminPostbox rd = new CommAdminPostbox(c);
+        rd.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       
+        super.dispose();
+        CommAdminReports cd = new CommAdminReports(c);
+        cd.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-       
+        super.dispose();
+        LoginPanel lp = new LoginPanel();
+        lp.setVisible(true);
     }//GEN-LAST:event_jButton6ActionPerformed
-    
+
     private void initImage() {
         adminName.setText("Welcome " + c.getName());
         ImagePanel jPanel1 = new ImagePanel("src/assets/commadmindashboard.jpg");
@@ -157,10 +161,9 @@ public class CommAdminDashboard extends javax.swing.JFrame {
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-    
+
     }
-   
-    
+
     /**
      * @param args the command line arguments
      */
@@ -204,5 +207,4 @@ public class CommAdminDashboard extends javax.swing.JFrame {
     private javax.swing.JButton jButton6;
     // End of variables declaration//GEN-END:variables
 
-    
 }
