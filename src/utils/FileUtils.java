@@ -31,6 +31,8 @@ import java.util.Date;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.mail.Message;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
@@ -53,6 +55,8 @@ public class FileUtils {
     private static final String numberRegex = "^[0-9.]*$";
     private static final String nameNumberRegex = "^[a-zA-Z0-9-, ]+$";
     private static final SimpleDateFormat dateFormat = new SimpleDateFormat("MM-DD-YYYY");
+    public static final Pattern VALID_EMAIL_ADDRESS_REGEX = 
+    Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
 
     private static final SimpleDateFormat formatter3 = new SimpleDateFormat("MM-dd-yyyy");
 
@@ -63,6 +67,14 @@ public class FileUtils {
     public static boolean validateNumber(String numberInput) {
         return numberInput.matches(numberRegex);
     }
+    
+    public static boolean validateEmail(String emailStr) {
+        if (emailStr.equals("All")) {
+            return true;
+        }
+        Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(emailStr);
+        return matcher.find();
+}
 
     public static boolean validateNameNumber(String nameNumberInput) {
         return nameNumberInput.matches(nameNumberRegex);
