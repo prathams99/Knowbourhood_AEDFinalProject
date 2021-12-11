@@ -147,6 +147,33 @@
         "username": "shyam",
         "password": "shyamrocks",
         "email": "comadmin4@gmail.com"
+      },
+      {
+        "name": "Dinesh Verma",
+        "dob": "Jun 27, 1980, 12:00:00 AM",
+        "contact": 9594999369,
+        "communityName": "Brighton",
+        "username": "shyam",
+        "password": "shyamrocks",
+        "email": "comadmin6@gmail.com"
+      },
+      {
+        "name": "Sudama Sharma",
+        "dob": "Jul 27, 1980, 12:00:00 AM",
+        "contact": 9594999370,
+        "communityName": "Roxbury",
+        "username": "sudama",
+        "password": "sudamarocks",
+        "email": "comadmin7@gmail.com"
+      },
+      {
+        "name": "Bhavesh Jharkhande",
+        "dob": "Dec 27, 1980, 12:00:00 AM",
+        "contact": 9594999371,
+        "communityName": "Allston",
+        "username": "bhavesh",
+        "password": "bhaveshrocks",
+        "email": "comadmin8@gmail.com"
       }
     ]
     }
