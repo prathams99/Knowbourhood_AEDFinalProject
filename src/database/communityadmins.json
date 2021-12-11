@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Mahesh Sahasrabuddhe",
+    "dob": "Dec 27, 1998, 12:00:00 AM",
+    "contact": 9594999364,
+    "communityName": "Roxbury",
+    "username": "mahesh",
+    "password": "maheshrocks",
+    "email": "pratham220399@gmail.com"
+  },
+  {
+    "name": "Anuj Raut",
+    "dob": "Dec 27, 1999, 12:00:00 AM",
+    "contact": 9594999363,
+    "communityName": "Mission Main",
+    "username": "anuj",
+    "password": "anujrocks",
+    "email": "comadmin1@gmail.com"
+  }
+]
