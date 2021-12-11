@@ -459,7 +459,33 @@ public class AdminReports extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton9ActionPerformed
 
     
-   
+   private void search() {
+        index = -1;
+        count = 1;
+        userNews.clear();
+        totalEncounters = 0;
+        System.out.println("MKC" + newsList.toString());
+        
+        for (int i = 0; i < newsList.size(); i++) {
+                if (index == -1) {
+                    index = i;
+                }
+                count = i;
+                userNews.add(newsList.get(i));
+                totalEncounters++;
+        }
+        if (index == -1) {
+            JOptionPane.showMessageDialog(this, "Report Not Found!");
+        } else {
+            Report newsNew = userNews.get(currentEncounter);            
+            subjectTitle.setText(newsNew.getSubject());
+            encounterNumber.setText(1 + " / " + String.valueOf(totalEncounters));
+            messageTitle.setText(newsNew.getMessage());
+            nameTitle.setText(newsNew.getName());
+            dateTitle.setText(newsNew.getDate() + "");
+            communityTitle.setText(newsNew.getCommunity());
+        }
+    }
     
     private void initImage() {
         ImagePanel jPanel1 = new ImagePanel("src/assets/love.jpg");
