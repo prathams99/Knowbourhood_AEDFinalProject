@@ -344,7 +344,34 @@ public class AdminPostbox extends javax.swing.JFrame {
 
                 dtm.addRow(row);
         }
-    } 
+    }
+    
+    private void fillNews() {
+        DefaultTableModel dtm = (DefaultTableModel) newsTable.getModel();
+        dtm.setRowCount(0);
+
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+        newsTable.setDefaultRenderer(String.class, centerRenderer);
+
+        DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) newsTable.getTableHeader().getDefaultRenderer();
+        renderer.setHorizontalAlignment(0);
+        DateFormat dateFormat = new SimpleDateFormat("MM-DD-YYYY");
+
+        for (int x = 0; x < newsTable.getColumnCount(); x++) {
+            newsTable.getColumnModel().getColumn(x).setCellRenderer(centerRenderer);
+        }
+
+        for (int i = 0; i < n.size(); i++) {
+                Object[] row = new Object[dtm.getColumnCount()];
+                row[0] = n.get(i).getDate();
+                row[1] = n.get(i).getSubject();
+                row[2] = n.get(i).getMessage();
+                row[3] = n.get(i).getEmail();
+                dtm.addRow(row);
+        }
+    }
+    
     private void initImage() {
         ImagePanel jPanel1 = new ImagePanel("src/assets/adminpostbox.jpg");
 
