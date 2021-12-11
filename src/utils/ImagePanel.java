@@ -7,6 +7,7 @@ package utils;
 
 
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
@@ -14,6 +15,8 @@ import javax.swing.JPanel;
 /**
  *
  * @author prath
+ * @author viveksharma
+
  */
 public class ImagePanel extends JPanel {
 
@@ -32,6 +35,8 @@ public class ImagePanel extends JPanel {
 
     private BufferedImage getScaledImage() {
         BufferedImage image = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_RGB);
+        Graphics2D g2d = (Graphics2D) image.createGraphics();
+        g2d.drawImage(backImage.getImage(), 0, 0,getWidth(),getHeight(), null);
         return image;
     }
 }
