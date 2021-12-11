@@ -286,7 +286,23 @@ public class UpdateComm extends javax.swing.JFrame {
         }
         updateUser();
     }
-     
+     private void updateUser() {
+        if (index != -1) {
+            CommunityAdmin resident = r.get(index);
+            resident.setName(nameInput.getText());
+            resident.setContact(Long.parseLong(contactInput.getText()));
+            resident.setCommunityName(communityInput.getText());
+            resident.setDob(FileUtils.convertStringToDate(dobInput.getText()));
+            resident.setEmail(mailInput.getText());
+            resident.setUsername(usernameInput.getText());
+            r.set(index, resident);
+            FileUtils.writeCommunityAdmins(r);
+            JOptionPane.showMessageDialog(this, "Updated Succesfully.");
+            super.dispose();
+            CommAdminManagement ad = new CommAdminManagement();
+            ad.setVisible(true);
+        }
+    }
     private void initImage() {
         updateUserPanel.setVisible(false);
         ImagePanel jPanel1 = new ImagePanel("src/assets/updatecomm.jpg");
