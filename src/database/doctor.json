@@ -46,5 +46,21 @@
     "password": "doctor@123",
     "email": "doctor5@gmail.com",
     "hospitalName": "Mission hill Hospital"
+  },
+  {
+    "name": "Doctor six",
+    "contact": 8982253360,
+    "username": "doc6",
+    "password": "doctor@123",
+    "email": "doctor6@gmail.com",
+    "hospitalName": "Mission hill Hospital"
+  },
+  {
+    "name": "Doctor seven",
+    "contact": 8982253361,
+    "username": "doc7",
+    "password": "doctor@123",
+    "email": "doctor7@gmail.com",
+    "hospitalName": "Mission hill Hospital"
   }
 ]
