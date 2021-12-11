@@ -6,14 +6,15 @@ package utils;
 
 import java.io.IOException;
 import java.net.Socket;
+
 /**
  *
  * @author viveksharma
  */
 public class MySingletonSocket {
-    
+
     private static Socket clientSocket;
-    
+
     static {
         try {
             clientSocket = new MySingletonSocket("localhost", 5500);
@@ -21,8 +22,12 @@ public class MySingletonSocket {
             System.out.println("Server listening");
         }
     }
-    
+
     private MySingletonSocket(final String address, final int port) throws IOException {
         super(address, port);
+    }
+
+    public static final Socket getInstance() {
+        return clientSocket;
     }
 }
