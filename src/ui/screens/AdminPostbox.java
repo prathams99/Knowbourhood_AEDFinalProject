@@ -40,7 +40,8 @@ public class AdminPostbox extends javax.swing.JFrame {
         this.n = FileUtils.readNews();
         initComponents();
         initImage();
-        
+        fillData();
+        fillNews();
     }
 
     /**
@@ -298,7 +299,79 @@ public class AdminPostbox extends javax.swing.JFrame {
         AdminDashboard ad = new AdminDashboard();
         ad.setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
+    
+     private void saveNews() {
+        Date date=java.util.Calendar.getInstance().getTime();
+        News n = new News(subject.getText(), message.getText(), "All", date, mailId.getText());
+        newsList = FileUtils.readNews();
+        newsList.add(n);
+        FileUtils.writeNews(newsList);
+        JOptionPane.showMessageDialog(this, "Your message has been posted. Thank You.");
+    }
+     public LocalDate convertToLocalDateViaInstant(Date dateToConvert) {
+        return dateToConvert.toInstant()
+                .atZone(ZoneId.systemDefault())
+                .toLocalDate();
+    }
+    
+    private void fillData() {
+        DefaultTableModel dtm = (DefaultTableModel) residentTable.getModel();
+        dtm.setRowCount(0);
 
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+        residentTable.setDefaultRenderer(String.class, centerRenderer);
+
+        DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) residentTable.getTableHeader().getDefaultRenderer();
+        renderer.setHorizontalAlignment(0);
+        DateFormat dateFormat = new SimpleDateFormat("MM-DD-YYYY");
+
+        for (int x = 0; x < residentTable.getColumnCount(); x++) {
+            residentTable.getColumnModel().getColumn(x).setCellRenderer(centerRenderer);
+        }
+
+        for (int i = 0; i < r.size(); i++) {
+                residentList.add(r.get(i));
+                System.out.println(residentList.toString());
+                Object[] row = new Object[dtm.getColumnCount()];
+                row[0] = r.get(i).getName();
+                row[1] = r.get(i).getContact();
+                row[2] = r.get(i).getAddress();
+                row[3] = r.get(i).getCommunity();
+                row[4] = FileUtils.calculateAge(convertToLocalDateViaInstant(r.get(i).getDob()));
+                row[5] = r.get(i).getEmail();
+                row[6] = r.get(i).getUsername();
+
+                dtm.addRow(row);
+        }
+    }
+    
+    private void fillNews() {
+        DefaultTableModel dtm = (DefaultTableModel) newsTable.getModel();
+        dtm.setRowCount(0);
+
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+        newsTable.setDefaultRenderer(String.class, centerRenderer);
+
+        DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) newsTable.getTableHeader().getDefaultRenderer();
+        renderer.setHorizontalAlignment(0);
+        DateFormat dateFormat = new SimpleDateFormat("MM-DD-YYYY");
+
+        for (int x = 0; x < newsTable.getColumnCount(); x++) {
+            newsTable.getColumnModel().getColumn(x).setCellRenderer(centerRenderer);
+        }
+
+        for (int i = 0; i < n.size(); i++) {
+                Object[] row = new Object[dtm.getColumnCount()];
+                row[0] = n.get(i).getDate();
+                row[1] = n.get(i).getSubject();
+                row[2] = n.get(i).getMessage();
+                row[3] = n.get(i).getEmail();
+                dtm.addRow(row);
+        }
+    }
+    
     private void initImage() {
         ImagePanel jPanel1 = new ImagePanel("src/assets/adminpostbox.jpg");
 
