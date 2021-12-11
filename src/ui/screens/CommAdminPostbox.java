@@ -27,7 +27,12 @@ import utils.ImagePanel;
  */
 public class CommAdminPostbox extends javax.swing.JFrame {
 
-   
+    private CommunityAdmin c;
+    private ArrayList<Resident> r;
+    private int i;
+    private ArrayList<Resident> residentList = new ArrayList<Resident>();
+    private ArrayList<News> newsList;
+    private ArrayList<News> n;
    
 
     /**
