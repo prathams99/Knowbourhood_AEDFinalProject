@@ -13,6 +13,15 @@ public class Test {
 
     //final int INTERVAL = 5000;///you may use interval
     CanvasFrame canvas = new CanvasFrame("Web Cam");
+    public boolean flag = true;
+
+    public boolean isFlag() {
+        return flag;
+    }
+    
+    public void setFlag(boolean flag) {
+        this.flag = flag;
+    }
 
     public Test() {
         canvas.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
