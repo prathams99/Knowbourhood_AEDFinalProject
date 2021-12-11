@@ -72,6 +72,20 @@
         "username": "firemen1",
         "password": "fire@123",
         "email": "firemen1@gmail.com"
+      },
+      {
+        "name": "Firemen two",
+        "contact": 9876543212,
+        "username": "firemen2",
+        "password": "fire@123",
+        "email": "firemen2@gmail.com"
+      },
+      {
+        "name": "Firemen three",
+        "contact": 9876543213,
+        "username": "firemen3",
+        "password": "fire@123",
+        "email": "firemen3@gmail.com"
       }
     ]
   }
