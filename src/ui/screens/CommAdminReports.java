@@ -46,6 +46,21 @@ public class CommAdminReports extends javax.swing.JFrame {
     public CommAdminReports() {
         initComponents();
     }
+    
+      /**
+     * Creates new form CommAdminReports
+     */
+    public CommAdminReports(CommunityAdmin c) {
+        this.c = c;
+        initComponents();
+        this.newsList = FileUtils.readReport();
+        this.userNews = new ArrayList<>();
+        this.residentsFound = new ArrayList<>();
+        this.report = new ArrayList<>();
+        currentEncounter = 0;
+        initImage();
+        search();
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
