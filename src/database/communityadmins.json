@@ -16,5 +16,23 @@
     "username": "anuj",
     "password": "anujrocks",
     "email": "comadmin1@gmail.com"
+  },
+  {
+    "name": "John Doe",
+    "dob": "Jan 27, 1998, 12:00:00 AM",
+    "contact": 9594999365,
+    "communityName": "Mission Hill",
+    "username": "john",
+    "password": "johnrocks",
+    "email": "comadmin2@gmail.com"
+  },
+  {
+    "name": "Ram Verma",
+    "dob": "Feb 27, 1996, 12:00:00 AM",
+    "contact": 9594999366,
+    "communityName": "Back Bay",
+    "username": "ram",
+    "password": "ramrocks",
+    "email": "comadmin3@gmail.com"
   }
 ]
