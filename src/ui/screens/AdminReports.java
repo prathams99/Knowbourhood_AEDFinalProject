@@ -483,6 +483,22 @@ public class AdminReports extends javax.swing.JFrame {
         cd.setVisible(true);
     }
     
+    public void sendMail(String to, String subject, String email_body) {
+        String username = "knowbourhood@gmail.com";
+        String password = "aedpassword123";
+        residents = FileUtils.readResidents();
+        for (int x = 0; x < residents.size(); x++) {
+                residentsFound.add(residents.get(x));
+        }
+        
+        if (to.equals("All")) {
+            for (int i = 0; i < residentsFound.size(); i++) {
+                doSendMail(username, password, residentsFound.get(i).getEmail(), subject, email_body);
+            }
+            JOptionPane.showMessageDialog(null, "Message Sent!", "Sent", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+    
     public void doSendMail(final String username, final String password, String to, String subject, String email_body) {
 
         Properties props = new Properties();
