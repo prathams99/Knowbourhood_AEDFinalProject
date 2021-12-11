@@ -10,6 +10,7 @@ import data.Police;
 import data.Report;
 import data.Resident;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import utils.FileUtils;
 import utils.ImagePanel;
 
@@ -18,7 +19,7 @@ import utils.ImagePanel;
  * @author viveksharma
  */
 public class PoliceDashboard extends javax.swing.JFrame {
-    
+
     private Police p;
     private int currentEncounter;
     private int index = -1;
@@ -30,7 +31,7 @@ public class PoliceDashboard extends javax.swing.JFrame {
     private int i;
     private ArrayList<Resident> r;
     private ArrayList<News> n;
-    
+
     /**
      * Creates new form PoliceDashboard
      */
@@ -44,7 +45,7 @@ public class PoliceDashboard extends javax.swing.JFrame {
         initComponents();
         initImage();
     }
-    
+
     public PoliceDashboard(Police police) {
         this.p = police;
         this.newsList = FileUtils.readReport();
@@ -416,7 +417,34 @@ public class PoliceDashboard extends javax.swing.JFrame {
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
 //        
     }//GEN-LAST:event_jButton5ActionPerformed
-    
+
+    private void search() {
+        index = -1;
+        count = 1;
+        userNews.clear();
+        totalEncounters = 0;
+
+        for (int i = 0; i < newsList.size(); i++) {
+            if (index == -1) {
+                index = i;
+            }
+            count = i;
+            userNews.add(newsList.get(i));
+            totalEncounters++;
+        }
+        if (index == -1) {
+            JOptionPane.showMessageDialog(this, "Report Not Found!");
+        } else {
+            Report newsNew = userNews.get(currentEncounter);
+            subjectTitle.setText(newsNew.getSubject());
+            encounterNumber.setText(1 + " / " + String.valueOf(totalEncounters));
+            messageTitle.setText(newsNew.getMessage());
+            nameTitle.setText(newsNew.getName());
+            communityTitle.setText(newsNew.getCommunity());
+            dateTitle.setText(newsNew.getDate() + "");
+        }
+    }
+
     private void initImage() {
         adminName.setText("Welcome Officer " + p.getName());
         ImagePanel jPanel1 = new ImagePanel("src/assets/police.jpg");
@@ -444,8 +472,9 @@ public class PoliceDashboard extends javax.swing.JFrame {
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
+        search();
     }
-    
+
     /**
      * @param args the command line arguments
      */
