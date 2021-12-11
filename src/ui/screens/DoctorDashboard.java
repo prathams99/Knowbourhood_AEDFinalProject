@@ -24,10 +24,34 @@ import utils.ImagePanel;
  */
 public class DoctorDashboard extends javax.swing.JFrame {
     
+    private Doctor d;
+    private int currentEncounter;
+    private int index = -1;
+    private int count = -1;
+    private int totalEncounters = 0;
+    private ArrayList<Report> newsList;
+    private ArrayList<Report> userNews;
+    private ArrayList<Report> report;
+    private int i;
+    private ArrayList<Resident> r;
+    private ArrayList<News> n;
+    
     /**
      * Creates new form DoctorDashboard
      */
     public DoctorDashboard(Doctor d) {
+        if (d == null) {
+            System.out.println("Please login to continue.");
+            System.exit(0);
+            return;
+        }
+        this.d = d;
+        this.newsList = FileUtils.readReport();
+        this.userNews = new ArrayList<>();
+        this.report = new ArrayList<>();
+        this.r = FileUtils.readResidents();
+        this.n = FileUtils.readNews();
+        currentEncounter = 0;
         initComponents();
         initImage();
     }
@@ -435,6 +459,8 @@ public class DoctorDashboard extends javax.swing.JFrame {
         lp.setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    
+    
     private void initImage() {
         if (d == null) {
             System.out.println("Please login to continue.");
