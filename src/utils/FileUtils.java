@@ -7,6 +7,7 @@ import data.CommunityAdmin;
 import data.Doctor;
 import data.EmergencyServices;
 import data.Fireman;
+import data.Help;
 import data.News;
 import data.Police;
 import data.Report;
@@ -248,5 +249,17 @@ public class FileUtils {
     public static void writeEs(ArrayList<EmergencyServices> doctorList) {
         Gson g = new GsonBuilder().setPrettyPrinting().create();
         writeFile("src/database/es-enterprise.json", g.toJson(doctorList));
+    }
+    
+    public static ArrayList<Help> readHelp() {
+        Gson g = new Gson();
+        String json = FileUtils.readFile("src/database/help.json");
+        return g.fromJson(json, new TypeToken<ArrayList<Help>>() {
+        }.getType());
+    }
+    
+    public static void writeHelp(ArrayList<Help> doctorList) {
+        Gson g = new GsonBuilder().setPrettyPrinting().create();
+        writeFile("src/database/help.json", g.toJson(doctorList));
     }
 }
