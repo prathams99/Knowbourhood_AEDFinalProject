@@ -5,6 +5,7 @@
  */
 package utils;
 
+import java.awt.image.BufferedImage;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
@@ -20,4 +21,9 @@ public class ImagePanel extends JPanel {
         backImage = new ImageIcon(imageName);
     }
 
+    private BufferedImage getScaledImage() {
+        BufferedImage image = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_RGB);
+
+        return image;
+    }
 }
