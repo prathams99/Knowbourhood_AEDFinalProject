@@ -28,9 +28,17 @@ import utils.ImagePanel;
  * @author prath
  */
 public class CommAdminReports extends javax.swing.JFrame {
-
-   
-  
+    
+    private CommunityAdmin c;
+    private int currentEncounter;
+    private int index = -1;
+    private int count = -1;
+    private int totalEncounters = 0;
+    private ArrayList<Report> newsList;
+    private ArrayList<Report> userNews;
+    private ArrayList<Resident> residents;
+    private ArrayList<Resident> residentsFound;
+    private ArrayList<Report> report;
     
     /**
      * Creates new form CommAdminReports
