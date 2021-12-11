@@ -5,11 +5,22 @@
  */
 package ui.screens;
 
+import com.sun.jdi.connect.spi.Connection;
 import data.Police;
+import data.Resident;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.io.IOException;
+import java.net.InetAddress;
+import java.net.ServerSocket;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import utils.FileUtils;
 import utils.ImagePanel;
+import utils.MySingletonSocket;
 
 /**
  *
@@ -24,6 +35,7 @@ public class CreatePolice extends javax.swing.JFrame {
         initComponents();
         initImage();
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -173,7 +185,7 @@ public class CreatePolice extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void validateFields() {
-        
+
         if (!FileUtils.validateName(nameInput.getText())) {
             JOptionPane.showMessageDialog(this, "Please enter a valid name.");
             return;
@@ -197,10 +209,10 @@ public class CreatePolice extends javax.swing.JFrame {
         createUser();
         sendMail();
     }
-    
+
     private void createUser() {
         try {
-            Police p = new Police(nameInput.getText(),Long.parseLong(contactInput.getText()), usernameInput.getText(), passwordInput.getText(), mailInput.getText());
+            Police p = new Police(nameInput.getText(), Long.parseLong(contactInput.getText()), usernameInput.getText(), passwordInput.getText(), mailInput.getText());
             ArrayList<Police> policelist = FileUtils.readPolice();
             policelist.add(p);
             FileUtils.writePolice(policelist);
@@ -212,12 +224,12 @@ public class CreatePolice extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
-    
+
     private void sendMail() {
         FileUtils.sendMail(mailInput.getText(), "Welcome to Knowbourhood: Set up a new password", "Hello! Your ID is succesfully created and your default password is " + passwordInput.getText() + ". You can create a new password or use the same one. In order to create a new password, click on this link and enter your username and new password. You can log in to the application after setting a new password. If the link is not working, click on the Forget / Reset password button in the application and enter your email ID to continue. \n" + "Username: " + usernameInput.getText() + "\n Password Reset Link: http://localhost:3000/police-" + usernameInput.getText());
     }
-    
-        private void initImage() {
+
+    private void initImage() {
         ImagePanel jPanel1 = new ImagePanel("src/assets/createpolice.jpg");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -243,7 +255,7 @@ public class CreatePolice extends javax.swing.JFrame {
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        
+
         contactInput.addKeyListener(new KeyAdapter() {
             public void keyTyped(KeyEvent e) {
                 if (contactInput.getText().length() >= 10) // limit textfield to 4 characters
@@ -253,7 +265,7 @@ public class CreatePolice extends javax.swing.JFrame {
             }
         });
     }
-    
+
     /**
      * @param args the command line arguments
      */
