@@ -12,6 +12,7 @@ import data.Resident;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
+import ui.login.LoginPanel;
 import utils.FileUtils;
 import utils.ImagePanel;
 
@@ -385,6 +386,28 @@ public class PoliceDashboard extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 //    
+        if (!FileUtils.validateEmail(mailId.getText())) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid e-mail.");
+            return;
+        }
+        if (!FileUtils.validateName(subject.getText())) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid subject.");
+            return;
+        }
+        if (!FileUtils.validateName(message.getText())) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid message.");
+            return;
+        }
+        if (mailId.getText().equals("All")) {
+            for (i = 0; i < r.size(); i++) {
+                FileUtils.sendMail(r.get(i).getEmail(), subject.getText(), message.getText());
+            }
+            JOptionPane.showMessageDialog(this, "Your message has been posted. Thank You.");
+        } else {
+            FileUtils.sendMail(mailId.getText(), subject.getText(), message.getText());
+            JOptionPane.showMessageDialog(this, "Your message has been posted. Thank You.");
+        }
+        saveNews();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void messageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_messageActionPerformed
@@ -401,7 +424,7 @@ public class PoliceDashboard extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
 //        
-if (currentEncounter > 0) {
+        if (currentEncounter > 0) {
             currentEncounter--;
             System.out.println("MINUS" + currentEncounter);
             Report encounter = userNews.get(currentEncounter);
@@ -410,7 +433,7 @@ if (currentEncounter > 0) {
             nameTitle.setText(encounter.getName());
             communityTitle.setText(encounter.getCommunity());
             dateTitle.setText(encounter.getDate() + "");
-            encounterNumber.setText(currentEncounter+1 + " / " + String.valueOf(totalEncounters));
+            encounterNumber.setText(currentEncounter + 1 + " / " + String.valueOf(totalEncounters));
         } else {
             JOptionPane.showMessageDialog(this, "There are only " + String.valueOf(totalEncounters) + " messages from Residents.");
         }
