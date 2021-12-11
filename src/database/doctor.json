@@ -1,0 +1,18 @@
+[
+  {
+    "name": "Abhishek Kalantri",
+    "contact": 8982253353,
+    "username": "doc",
+    "password": "doctor@123",
+    "email": "rohitchouhancr07@gmail.com",
+    "hospitalName": "Boston Hospital"
+  },
+  {
+    "name": "Doctor One",
+    "contact": 8982253355,
+    "username": "doc1",
+    "password": "doctor@123",
+    "email": "doctor1@gmail.com",
+    "hospitalName": "Mission hill Hospital"
+  }
+]
