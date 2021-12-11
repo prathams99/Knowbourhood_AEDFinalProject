@@ -43,6 +43,7 @@ public class ResidentDashboard extends javax.swing.JFrame {
         currentEncounter = 0;
         initComponents();
         initImage();
+        search();
     }
     
     /**
@@ -419,6 +420,39 @@ public class ResidentDashboard extends javax.swing.JFrame {
         VolunteerDashboard nh = new VolunteerDashboard(r);
         nh.setVisible(true);
     }//GEN-LAST:event_jLabel6MouseClicked
+    
+    private void search() {
+        index = -1;
+        count = 1;
+        userNews.clear();
+        totalEncounters = 0;
+        DateFormat dateFormat = new SimpleDateFormat("YYYY-MM-DD");
+        News news;
+        
+        for (int i = 0; i < newsList.size(); i++) {
+            if (newsList.get(i).getEmail().equals(r.getEmail()) || newsList.get(i).getEmail().equals("All")) {
+                if (index == -1) {
+                    index = i;
+                }
+                count = i;
+                userNews.add(newsList.get(i));
+                totalEncounters++;
+            }
+        }
+        for (News e : userNews) {
+            System.out.println(e.toString());
+        }
+        if (index == -1) {
+            JOptionPane.showMessageDialog(this, "Patient Not Found!");
+        } else {
+            News newsNew = userNews.get(currentEncounter);            
+            subjectTitle.setText(newsNew.getSubject());
+            encounterNumber.setText(1 + " / " + String.valueOf(totalEncounters));
+            messageTitle.setText(newsNew.getMessage());
+            mailTitle.setText(newsNew.getEmail());
+            dateTitle.setText(newsNew.getDate() + "");
+        }
+    }
     
     private void initImage() {
         residentName.setText("Welcome " + r.getName());
