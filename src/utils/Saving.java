@@ -5,7 +5,18 @@
  */
 package utils;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Toolkit;
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JWindow;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -35,5 +46,45 @@ public class Saving extends JWindow {
 
             }
         });
+    }
+    
+    public void showSplash() {
+
+        JPanel content = (JPanel) getContentPane();
+        content.setBackground(Color.WHITE);
+
+        // Set the window's bounds, centering the window
+        int width = 700;
+        int height = 450;
+        Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
+        int x = (screen.width - width) / 2;
+        int y = (screen.height - height) / 2;
+        setBounds(x, y, width, height);
+
+        // Build the splash screen
+        JLabel label = new JLabel(new ImageIcon(getClass().getResource("saving.gif")));
+        JLabel copyrt = new JLabel("Splash Screen!!!", JLabel.CENTER);
+
+        content.add(label, BorderLayout.CENTER);
+
+        label.setLayout(new GridBagLayout());
+        Font font = copyrt.getFont();
+        copyrt.setFont(font.deriveFont(Font.BOLD, 24f));
+
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridwidth = GridBagConstraints.REMAINDER;
+        label.add(copyrt, gbc);
+
+        ImageIcon wait = new ImageIcon(getClass().getResource("saving.gif"));
+        label.add(new JLabel(wait), gbc);
+
+
+        content.setBorder(BorderFactory.createLineBorder(Color.BLACK, 10));
+
+        // Display it
+        setVisible(true);
+        toFront();
+
+        new ResourceLoader().execute();
     }
 }
