@@ -245,7 +245,13 @@ public class ViewComm extends javax.swing.JFrame {
         dm.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
-   
+    private void validateEmail() {
+        if (!FileUtils.validateEmail(mailSearch.getText())) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid email id.");
+            return;
+        }
+        searchResident();
+    }
     
     private void initImage() {
         updateUserPanel.setVisible(false);
