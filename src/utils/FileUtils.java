@@ -1,6 +1,9 @@
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.ZoneId;
 import java.util.Date;
 
 /*
@@ -52,6 +55,21 @@ public class FileUtils {
             }
         }
         return null;
+    }
+      
+      public static int calculateAge(LocalDate birthDate) {
+        LocalDate currentDate = LocalDate.now();
+        if ((birthDate != null) && (currentDate != null)) {
+            return Period.between(birthDate, currentDate).getYears();
+        } else {
+            return 0;
+        }
+    }
+    
+    public LocalDate convertToLocalDateViaInstant(Date dateToConvert) {
+        return dateToConvert.toInstant()
+                .atZone(ZoneId.systemDefault())
+                .toLocalDate();
     }
     
 }
