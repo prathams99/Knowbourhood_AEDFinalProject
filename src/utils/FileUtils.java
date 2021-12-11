@@ -9,6 +9,7 @@ import data.News;
 import data.Police;
 import data.Report;
 import data.Resident;
+import data.Users;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -209,5 +210,17 @@ public class FileUtils {
     public static void writeReport(ArrayList<Report> reportList) {
         Gson g = new GsonBuilder().setPrettyPrinting().create();
         writeFile("src/database/reports.json", g.toJson(reportList));
+    }
+    
+    public static ArrayList<Users> readUsers() {
+        Gson g = new Gson();
+        String json = FileUtils.readFile("src/database/users-enterprise.json");
+        return g.fromJson(json, new TypeToken<ArrayList<Users>>() {
+        }.getType());
+    }
+    
+    public static void writeUsers(ArrayList<Users> usersList) {
+        Gson g = new GsonBuilder().setPrettyPrinting().create();
+        writeFile("src/database/users-enterprise.json", g.toJson(usersList));
     }
 }
