@@ -1,10 +1,19 @@
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.ZoneId;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -70,6 +79,41 @@ public class FileUtils {
         return dateToConvert.toInstant()
                 .atZone(ZoneId.systemDefault())
                 .toLocalDate();
+    }
+    
+    public static String readFile(String filepath) {
+        BufferedReader reader = null;
+        try {
+            String s = "";
+            reader = new BufferedReader(new FileReader(new File(filepath)));
+            while (true) {
+                String p = reader.readLine();
+                if (p == null) {
+                    break;
+                } else {
+                    s = s + p;
+                }
+            }
+            reader.close();
+            return s;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static void writeFile(String filepath, String content) {
+        try {
+            File file = new File(filepath);
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+            PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(new File(filepath))));
+            pw.println(content);
+            pw.close();
+        } catch (IOException ex) {
+            Logger.getLogger(FileUtils.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
 }
