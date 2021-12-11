@@ -259,7 +259,34 @@ public class UpdateComm extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     
-    
+     private void validateFields() {
+        if (!FileUtils.validateName(nameInput.getText())) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid name.");
+            return;
+        }
+        if (!FileUtils.isValidDate(dobInput.getText())) {
+            JOptionPane.showMessageDialog(this, "Please enter a Date in the format of MM-DD-YYYY");
+            return;
+        }
+        if (!FileUtils.validateNumber(contactInput.getText()) || contactInput.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid contact number.");
+            return;
+        }
+        if (!FileUtils.validateName(communityInput.getText())) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid community name.");
+            return;
+        }
+        if (!FileUtils.validateEmail(mailInput.getText())) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid mail id.");
+            return;
+        }
+        if (!FileUtils.validateNameNumber(usernameInput.getText())) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid username.");
+            return;
+        }
+        updateUser();
+    }
+     
     private void initImage() {
         updateUserPanel.setVisible(false);
         ImagePanel jPanel1 = new ImagePanel("src/assets/updatecomm.jpg");
