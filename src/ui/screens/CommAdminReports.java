@@ -306,7 +306,18 @@ public class CommAdminReports extends javax.swing.JFrame {
     }//GEN-LAST:event_subjectTitleActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-      
+       if (currentEncounter < userNews.size() - 1) {
+            currentEncounter++;
+            System.out.println("PLUS" + currentEncounter);
+            Report encounter = userNews.get(currentEncounter);
+            subjectTitle.setText(encounter.getSubject());
+            encounterNumber.setText(currentEncounter+1 + " / " + String.valueOf(totalEncounters));
+            messageTitle.setText(encounter.getMessage());
+            nameTitle.setText(encounter.getName());
+            dateTitle.setText(encounter.getDate() + "");
+        } else {
+            JOptionPane.showMessageDialog(this, "There are only " + String.valueOf(totalEncounters) + " messages for " + c.getName());
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
