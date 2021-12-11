@@ -365,6 +365,14 @@ public class CommAdminPostbox extends javax.swing.JFrame {
         FileUtils.writeNews(newsList);
         JOptionPane.showMessageDialog(this, "Your message has been posted. Thank You.");
     }
+    
+    
+    public LocalDate convertToLocalDateViaInstant(Date dateToConvert) {
+        return dateToConvert.toInstant()
+                .atZone(ZoneId.systemDefault())
+                .toLocalDate();
+    }
+
 
     private void initImage() {
         residentName.setText("Welcome " + c.getName());
