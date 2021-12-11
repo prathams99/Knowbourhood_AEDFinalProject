@@ -18,6 +18,10 @@ public class Test {
     public boolean isFlag() {
         return flag;
     }
+    
+    public void setFlag(boolean flag) {
+        this.flag = flag;
+    }
 
     public Test() {
         canvas.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
