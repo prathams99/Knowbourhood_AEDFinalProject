@@ -25,7 +25,7 @@ import ui.screens.ForgotPassword;
 import ui.screens.NeedHelp;
 import ui.screens.PoliceDashboard;
 import ui.screens.RegisterResident;
-import ui.screens.ResidentDashboard;
+import ui.screens.resident.ResidentDashboard;
 import utils.FileUtils;
 import utils.ImagePanel;
 
