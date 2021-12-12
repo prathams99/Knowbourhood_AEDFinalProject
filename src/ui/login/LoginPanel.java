@@ -23,7 +23,7 @@ import ui.screens.doctor.DoctorDashboard;
 import ui.screens.FireManDashboard;
 import ui.screens.ForgotPassword;
 import ui.screens.NeedHelp;
-import ui.screens.PoliceDashboard;
+import ui.screens.police.PoliceDashboard;
 import ui.screens.RegisterResident;
 import ui.screens.resident.ResidentDashboard;
 import utils.FileUtils;
