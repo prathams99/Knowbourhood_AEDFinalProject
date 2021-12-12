@@ -15,15 +15,15 @@ import javax.swing.JOptionPane;
 import utils.FileUtils;
 import utils.ImagePanel;
 
-
 /**
  *
  * @author viveksharma
  */
 public class UpdateFireman extends javax.swing.JFrame {
-    
-        private ArrayList<Fireman> r;
+
+    private ArrayList<Fireman> r;
     private int index = -1;
+
     /**
      * Creates new form UpdateFireman
      */
@@ -258,6 +258,26 @@ public class UpdateFireman extends javax.swing.JFrame {
         fmd.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void validateFields() {
+        if (!FileUtils.validateName(nameInput.getText())) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid name.");
+            return;
+        }
+        if (!FileUtils.validateNumber(contactInput.getText()) || contactInput.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid contact number.");
+            return;
+        }
+        if (!FileUtils.validateEmail(mailInput.getText())) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid mail id.");
+            return;
+        }
+        if (!FileUtils.validateNameNumber(usernameInput.getText())) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid username.");
+            return;
+        }
+        updateUser();
+    }
+
     private void updateUser() {
         if (index != -1) {
             Fireman resident = r.get(index);
@@ -273,7 +293,7 @@ public class UpdateFireman extends javax.swing.JFrame {
             cm.setVisible(true);
         }
     }
-    
+
     private void validateEmail() {
         if (!FileUtils.validateEmail(mailSearch.getText())) {
             JOptionPane.showMessageDialog(this, "Please enter a valid email id.");
@@ -281,7 +301,7 @@ public class UpdateFireman extends javax.swing.JFrame {
         }
         searchResident();
     }
-    
+
     private void searchResident() {
         String searchEmail = mailSearch.getText();
         String pattern = "MM-dd-yyyy";
@@ -304,7 +324,7 @@ public class UpdateFireman extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Fetched details of " + resident.getName());
         }
     }
-    
+
     private void initImage() {
         updateUserPanel.setVisible(false);
         ImagePanel jPanel1 = new ImagePanel("src/assets/updatefireman.jpg");
@@ -332,7 +352,7 @@ public class UpdateFireman extends javax.swing.JFrame {
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        
+
         contactInput.addKeyListener(new KeyAdapter() {
             public void keyTyped(KeyEvent e) {
                 if (contactInput.getText().length() >= 10) // limit textfield to 4 characters
@@ -342,7 +362,7 @@ public class UpdateFireman extends javax.swing.JFrame {
             }
         });
     }
-    
+
     /**
      * @param args the command line arguments
      */
