@@ -5,6 +5,7 @@
  */
 package ui.screens;
 
+import ui.login.LoginPanel;
 import utils.ImagePanel;
 
 /**

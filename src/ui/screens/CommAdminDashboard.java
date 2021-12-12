@@ -6,6 +6,7 @@
 package ui.screens;
 
 import data.CommunityAdmin;
+import ui.login.LoginPanel;
 import utils.ImagePanel;
 
 /**
@@ -130,7 +131,7 @@ public class CommAdminDashboard extends javax.swing.JFrame {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         super.dispose();
-        LoginPanel lp = new LoginPanel();
+            LoginPanel lp = new LoginPanel();
         lp.setVisible(true);
     }//GEN-LAST:event_jButton6ActionPerformed
 
