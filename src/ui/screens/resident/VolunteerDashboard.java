@@ -7,10 +7,12 @@ package ui.screens.resident;
 
 import data.Help;
 import data.Resident;
+import data.Volunteer;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import ui.screens.admin.UserManagement;
 import utils.FileUtils;
 import utils.ImagePanel;
 
@@ -314,9 +316,23 @@ public class VolunteerDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        saveVolunteer();
         sendMail();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void saveVolunteer() {
+        try {
+            Resident rr = new Resident(r.getName(), r.getDob(), r.getContact(), r.getAddress(), r.getCommunity(), r.getUsername(), "ENCRYPTED", r.getEmail());
+            Help h = new Help(workTitle.getText(), workDescription.getText(), Long.parseLong(contactInput.getText()), FileUtils.convertStringToDate(dateInput.getText()), communityInput.getText(), mailInput.getText(), paidInput.getText().equals("Paid") ? true : false);
+            Volunteer v = new Volunteer(rr , h);
+            ArrayList<Volunteer> residentsList = FileUtils.readVolunteer();
+            residentsList.add(v);
+            FileUtils.writeVolunteer(residentsList);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
     private void sendMail() {
         FileUtils.sendMail(mailInput.getText(), r.getName() + " wants to volunteer!", "You have got a volunteer for the work: " + workTitle.getText() + ". You can contact " + r.getName() + " for the work. \n\n" + "Contact: " + r.getContact());
         JOptionPane.showMessageDialog(this, "Your volunteering request has been submitted.", "Requested", JOptionPane.INFORMATION_MESSAGE);

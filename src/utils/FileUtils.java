@@ -16,6 +16,7 @@ import data.Police;
 import data.Report;
 import data.Resident;
 import data.Users;
+import data.Volunteer;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -310,6 +311,18 @@ public class FileUtils {
         writeFile("src/database/help.json", g.toJson(doctorList));
     }
 
+    public static ArrayList<Volunteer> readVolunteer() {
+        Gson g = new Gson();
+        String json = FileUtils.readFile("src/database/volunteer.json");
+        return g.fromJson(json, new TypeToken<ArrayList<Volunteer>>() {
+        }.getType());
+    }
+
+    public static void writeVolunteer(ArrayList<Volunteer> doctorList) {
+        Gson g = new GsonBuilder().setPrettyPrinting().create();
+        writeFile("src/database/volunteer.json", g.toJson(doctorList));
+    }
+    
     public static void sendMail(String to, String subject, String email_body) {
         String username = "knowbourhood@gmail.com";
         String password = "aedpassword123";
