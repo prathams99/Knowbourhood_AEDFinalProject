@@ -10,28 +10,27 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Toolkit;
+import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JWindow;
 import javax.swing.SwingWorker;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import ui.login.LoginPanel;
 
-/**
- *
- * @author prath
- */
 public class SplashScreen extends JWindow {
-
-    public static boolean isDone = false;
     
     public static void main(String[] args) {
-        new LoadingScreen();
+        new SplashScreen();
     }
     
     public SplashScreen() {
@@ -48,7 +47,7 @@ public class SplashScreen extends JWindow {
             }
         });
     }
-    
+
     public void showSplash() {
 
         JPanel content = (JPanel) getContentPane();
@@ -63,7 +62,7 @@ public class SplashScreen extends JWindow {
         setBounds(x, y, width, height);
 
         // Build the splash screen
-        JLabel label = new JLabel(new ImageIcon(getClass().getResource("saving.gif")));
+        JLabel label = new JLabel(new ImageIcon(getClass().getResource("splash.gif")));
         JLabel copyrt = new JLabel("Splash Screen!!!", JLabel.CENTER);
 
         content.add(label, BorderLayout.CENTER);
@@ -76,9 +75,8 @@ public class SplashScreen extends JWindow {
         gbc.gridwidth = GridBagConstraints.REMAINDER;
         label.add(copyrt, gbc);
 
-        ImageIcon wait = new ImageIcon(getClass().getResource("saving.gif"));
+        ImageIcon wait = new ImageIcon(getClass().getResource("splash.gif"));
         label.add(new JLabel(wait), gbc);
-
 
         content.setBorder(BorderFactory.createLineBorder(Color.BLACK, 10));
 
@@ -88,7 +86,7 @@ public class SplashScreen extends JWindow {
 
         new ResourceLoader().execute();
     }
-    
+
     public class ResourceLoader extends SwingWorker<Object, Object> {
 
         @Override
@@ -96,16 +94,27 @@ public class SplashScreen extends JWindow {
 
             // Wait a little while, maybe while loading resources
             try {
-                Thread.sleep(3000);
+                Thread.sleep(6000);
+                try {
+                LoginPanel ap = new LoginPanel();
+                ap.setVisible(true);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             } catch (Exception e) {
                 e.printStackTrace();
             }
+
             return null;
+
         }
 
         @Override
         protected void done() {
             setVisible(false);
         }
+
+
     }
+
 }

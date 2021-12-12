@@ -28,6 +28,7 @@ import ui.screens.RegisterResident;
 import ui.screens.resident.ResidentDashboard;
 import utils.FileUtils;
 import utils.ImagePanel;
+import utils.SplashScreen;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -382,7 +383,7 @@ public class LoginPanel extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LoginPanel().setVisible(true);
+                new SplashScreen().setVisible(true);
             }
         });
     }
