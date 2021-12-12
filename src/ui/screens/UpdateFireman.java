@@ -5,16 +5,29 @@
  */
 package ui.screens;
 
+import data.Fireman;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+import utils.FileUtils;
+import utils.ImagePanel;
+
 
 /**
  *
  * @author viveksharma
  */
 public class UpdateFireman extends javax.swing.JFrame {
+    
+        private ArrayList<Fireman> r;
+    private int index = -1;
     /**
      * Creates new form UpdateFireman
      */
     public UpdateFireman() {
+        this.r = FileUtils.readFiremen();
+        initComponents();
+        initImage();
     }
 
     /**
@@ -242,6 +255,43 @@ public class UpdateFireman extends javax.swing.JFrame {
         fmd.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void initImage() {
+        updateUserPanel.setVisible(false);
+        ImagePanel jPanel1 = new ImagePanel("src/assets/updatefireman.jpg");
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 300, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        
+        contactInput.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent e) {
+                if (contactInput.getText().length() >= 10) // limit textfield to 4 characters
+                {
+                    e.consume();
+                }
+            }
+        });
+    }
     
     /**
      * @param args the command line arguments
