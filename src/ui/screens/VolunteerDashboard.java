@@ -20,6 +20,7 @@ import utils.ImagePanel;
  */
 public class VolunteerDashboard extends javax.swing.JFrame {
 
+    //Creating variables
     private Resident r;
     private int currentEncounter;
     private int index = -1;
@@ -31,6 +32,8 @@ public class VolunteerDashboard extends javax.swing.JFrame {
     /**
      * Creates new form VolunteerDashboard
      */
+    
+    //Creating constructor
     public VolunteerDashboard() {
         this.newsList = FileUtils.readHelp();
         this.userNews = new ArrayList<>();
@@ -40,6 +43,7 @@ public class VolunteerDashboard extends javax.swing.JFrame {
         search();
     }
 
+    //Creating constructor
     public VolunteerDashboard(Resident r) {
         this.newsList = FileUtils.readHelp();
         this.userNews = new ArrayList<>();
