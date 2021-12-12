@@ -36,7 +36,6 @@ public class MNCDirectory {
         String json = FileUtils.readFile("src/database/mnc-enterprise.json");
         person = g.fromJson(json, new TypeToken<List<MNC>>() {
         }.getType());
-        System.out.println("HUEHEUE" + "LALALLA" + person.toString());    
     }
 
     private ArrayList<MNCReperesentative> getResident() {

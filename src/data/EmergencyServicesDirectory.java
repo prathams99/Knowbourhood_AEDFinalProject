@@ -37,7 +37,6 @@ public class EmergencyServicesDirectory {
         String json = FileUtils.readFile("src/database/es-enterprise.json");
         person = g.fromJson(json, new TypeToken<List<EmergencyServices>>() {
         }.getType());
-        System.out.println("HUEHEUE" + "LALALLA" + person.toString());    
     }
 
     private ArrayList<Resident> getResident() {

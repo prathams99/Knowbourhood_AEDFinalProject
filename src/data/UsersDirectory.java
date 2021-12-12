@@ -55,7 +55,6 @@ public class UsersDirectory {
         String json = FileUtils.readFile("src/database/users-enterprise.json");
         person = g.fromJson(json, new TypeToken<List<Users>>() {
         }.getType());
-        System.out.println("HUEHEUE" + "LALALLA" + person.toString());    
     }
 
     private ArrayList<Resident> getResident() {

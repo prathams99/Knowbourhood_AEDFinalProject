@@ -35,7 +35,6 @@ public class CommunityDirectory {
         String json = FileUtils.readFile("src/database/community-enterprise.json");
         person = g.fromJson(json, new TypeToken<List<Community>>() {
         }.getType());
-        System.out.println("HUEHEUE" + "LALALLA" + person.toString());    
     }
 
     private ArrayList<Resident> getResident() {

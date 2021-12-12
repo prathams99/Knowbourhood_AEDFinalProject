@@ -53,6 +53,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Postbox");
+        jButton1.setBorder(null);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -63,6 +64,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         jButton2.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Reports");
+        jButton2.setBorder(null);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -73,6 +75,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         jButton3.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("Resident Management");
+        jButton3.setBorder(null);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -83,6 +86,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         jButton4.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
         jButton4.setText("Police Management");
+        jButton4.setBorder(null);
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -100,6 +104,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         jButton6.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jButton6.setForeground(new java.awt.Color(255, 255, 255));
         jButton6.setText("Comm Admin Management");
+        jButton6.setBorder(null);
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
@@ -110,6 +115,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         jButton9.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jButton9.setForeground(new java.awt.Color(255, 255, 255));
         jButton9.setText("Fireman Management");
+        jButton9.setBorder(null);
         jButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton9ActionPerformed(evt);
@@ -120,6 +126,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         jButton10.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jButton10.setForeground(new java.awt.Color(255, 255, 255));
         jButton10.setText("Doctor Management");
+        jButton10.setBorder(null);
         jButton10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton10ActionPerformed(evt);
