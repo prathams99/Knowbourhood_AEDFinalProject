@@ -25,7 +25,7 @@ import utils.ImagePanel;
 
 /**
  *
- * @author prath
+ * @author jarvis
  */
 public class CommAdminReports extends javax.swing.JFrame {
     
