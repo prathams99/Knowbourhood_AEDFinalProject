@@ -8,7 +8,10 @@ package ui.screens;
 import data.Fireman;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import utils.FileUtils;
 import utils.ImagePanel;
 
@@ -255,6 +258,29 @@ public class UpdateFireman extends javax.swing.JFrame {
         fmd.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void searchResident() {
+        String searchEmail = mailSearch.getText();
+        String pattern = "MM-dd-yyyy";
+        DateFormat df = new SimpleDateFormat(pattern);
+        for (int i = 0; i < r.size(); i++) {
+            if (r.get(i).getEmail().equals(searchEmail)) {
+                index = i;
+                break;
+            }
+        }
+        if (index == -1) {
+            JOptionPane.showMessageDialog(this, "Fireman Not Found!");
+        } else {
+            Fireman resident = r.get(index);
+            updateUserPanel.setVisible(true);
+            nameInput.setText(resident.getName());
+            contactInput.setText(resident.getContact() + "");
+            mailInput.setText(resident.getEmail());
+            usernameInput.setText(resident.getUsername());
+            JOptionPane.showMessageDialog(this, "Fetched details of " + resident.getName());
+        }
+    }
+    
     private void initImage() {
         updateUserPanel.setVisible(false);
         ImagePanel jPanel1 = new ImagePanel("src/assets/updatefireman.jpg");
