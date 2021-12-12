@@ -7,6 +7,8 @@ package ui.screens.admin;
 
 import data.Fireman;
 import data.Police;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import utils.FileUtils;
@@ -266,6 +268,15 @@ public class CreateFireman extends javax.swing.JFrame {
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
+        
+        contactInput.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent e) {
+                if (contactInput.getText().length() >= 10) // limit textfield to 4 characters
+                {
+                    e.consume();
+                }
+            }
+        });
     }
     
     /**

@@ -96,6 +96,8 @@ public class DoctorDashboard extends javax.swing.JFrame {
         communityTitle = new javax.swing.JTextField();
         contactTitle = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        mailTitle = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
@@ -201,6 +203,12 @@ public class DoctorDashboard extends javax.swing.JFrame {
         jLabel17.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel17.setText("Contact:");
 
+        jLabel18.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel18.setText("Email:");
+
+        mailTitle.setEditable(false);
+        mailTitle.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+
         javax.swing.GroupLayout patientPanelLayout = new javax.swing.GroupLayout(patientPanel);
         patientPanel.setLayout(patientPanelLayout);
         patientPanelLayout.setHorizontalGroup(
@@ -235,11 +243,15 @@ public class DoctorDashboard extends javax.swing.JFrame {
                         .addGroup(patientPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(patientPanelLayout.createSequentialGroup()
                                 .addGap(10, 10, 10)
-                                .addGroup(patientPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(patientPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel13)
                                     .addComponent(jLabel15)
                                     .addComponent(jLabel11)
-                                    .addComponent(jLabel17))
+                                    .addComponent(jLabel17)
+                                    .addGroup(patientPanelLayout.createSequentialGroup()
+                                        .addGap(87, 87, 87)
+                                        .addComponent(mailTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel18))
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
@@ -250,13 +262,13 @@ public class DoctorDashboard extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel12)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(patientPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(patientPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 9, Short.MAX_VALUE))
-                    .addGroup(patientPanelLayout.createSequentialGroup()
-                        .addGap(9, 9, 9)
-                        .addComponent(nameTitle)))
+                .addGroup(patientPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nameTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, Short.MAX_VALUE)
+                .addGroup(patientPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(mailTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(patientPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -389,16 +401,16 @@ public class DoctorDashboard extends javax.swing.JFrame {
                 .addGap(0, 695, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(793, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 438, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(patientPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40))))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 438, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jButton5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(adminName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(patientPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -412,7 +424,7 @@ public class DoctorDashboard extends javax.swing.JFrame {
                         .addComponent(jButton5)))
                 .addGap(16, 16, 16)
                 .addComponent(patientPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
@@ -433,7 +445,6 @@ public class DoctorDashboard extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         if (currentEncounter < userNews.size() - 1) {
             currentEncounter++;
-            System.out.println("PLUS" + currentEncounter);
             Report encounter = userNews.get(currentEncounter);
             subjectTitle.setText(encounter.getSubject());
             encounterNumber.setText(currentEncounter+1 + " / " + String.valueOf(totalEncounters));
@@ -442,6 +453,7 @@ public class DoctorDashboard extends javax.swing.JFrame {
             contactTitle.setText(encounter.getContact() + "");
             communityTitle.setText(encounter.getCommunity());
             dateTitle.setText(encounter.getDate() + "");
+            mailTitle.setText(encounter.getEmail());
         } else {
             JOptionPane.showMessageDialog(this, "There are only " + String.valueOf(totalEncounters) + " messages from Residents.");
         }
@@ -450,7 +462,6 @@ public class DoctorDashboard extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         if (currentEncounter > 0) {
             currentEncounter--;
-            System.out.println("MINUS" + currentEncounter);
             Report encounter = userNews.get(currentEncounter);
             subjectTitle.setText(encounter.getSubject());
             messageTitle.setText(encounter.getMessage());
@@ -458,6 +469,7 @@ public class DoctorDashboard extends javax.swing.JFrame {
             contactTitle.setText(encounter.getContact() + "");
             communityTitle.setText(encounter.getCommunity());
             dateTitle.setText(encounter.getDate() + "");
+            mailTitle.setText(encounter.getEmail());
             encounterNumber.setText(currentEncounter+1 + " / " + String.valueOf(totalEncounters));
         } else {
             JOptionPane.showMessageDialog(this, "There are only " + String.valueOf(totalEncounters) + " messages from Residents.");
@@ -561,6 +573,7 @@ public class DoctorDashboard extends javax.swing.JFrame {
             contactTitle.setText(newsNew.getContact() + "");
             communityTitle.setText(newsNew.getCommunity());
             dateTitle.setText(newsNew.getDate() + "");
+            mailTitle.setText(newsNew.getEmail());
         }
     }
     
@@ -653,6 +666,7 @@ public class DoctorDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
@@ -660,6 +674,7 @@ public class DoctorDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField mailId;
+    private javax.swing.JTextField mailTitle;
     private javax.swing.JTextField message;
     private javax.swing.JTextField messageTitle;
     private javax.swing.JTextField nameTitle;

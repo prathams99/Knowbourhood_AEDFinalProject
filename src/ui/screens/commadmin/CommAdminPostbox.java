@@ -392,7 +392,6 @@ public class CommAdminPostbox extends javax.swing.JFrame {
         for (int i = 0; i < r.size(); i++) {
             if (r.get(i).getCommunity().equals(c.getCommunityName())) {
                 residentList.add(r.get(i));
-                System.out.println(residentList.toString());
                 Object[] row = new Object[dtm.getColumnCount()];
                 row[0] = r.get(i).getName();
                 row[1] = r.get(i).getContact();

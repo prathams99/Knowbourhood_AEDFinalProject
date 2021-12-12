@@ -50,7 +50,6 @@ public class Test {
 
             while (flag) {
                 Frame frame = grabber.grab();
-                //System.out.println("HEUHEUE" + flag);
 
                 img = converter.convert(frame);
 

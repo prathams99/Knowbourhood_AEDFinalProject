@@ -371,7 +371,6 @@ public class AdminReports extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         if (currentEncounter < userNews.size() - 1) {
             currentEncounter++;
-            System.out.println("PLUS" + currentEncounter);
             Report encounter = userNews.get(currentEncounter);
             subjectTitle.setText(encounter.getSubject());
             encounterNumber.setText(currentEncounter+1 + " / " + String.valueOf(totalEncounters));
@@ -387,7 +386,6 @@ public class AdminReports extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         if (currentEncounter > 0) {
             currentEncounter--;
-            System.out.println("MINUS" + currentEncounter);
             Report encounter = userNews.get(currentEncounter);
             subjectTitle.setText(encounter.getSubject());
             messageTitle.setText(encounter.getMessage());
@@ -573,7 +571,7 @@ public class AdminReports extends javax.swing.JFrame {
             message.setText(email_body);
             Transport.send(message);
         } catch (Exception e) {
-            System.out.println(e);
+            //System.out.println(e);
             JOptionPane.showMessageDialog(null, e.toString());
         }
     }
@@ -583,7 +581,6 @@ public class AdminReports extends javax.swing.JFrame {
         count = 1;
         userNews.clear();
         totalEncounters = 0;
-        System.out.println("MKC" + newsList.toString());
         
         for (int i = 0; i < newsList.size(); i++) {
                 if (index == -1) {
