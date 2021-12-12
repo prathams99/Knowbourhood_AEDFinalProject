@@ -1,6 +1,5 @@
 package ui.login;
 
-
 import data.CommunityAdmin;
 import data.CommunityDirectory;
 import data.Doctor;
@@ -25,6 +24,7 @@ import ui.screens.ForgotPassword;
 import ui.screens.NeedHelp;
 import ui.screens.police.PoliceDashboard;
 import ui.screens.RegisterResident;
+import ui.screens.mnc.MNCAdminDashboard;
 import ui.screens.resident.ResidentDashboard;
 import utils.FileUtils;
 import utils.ImagePanel;
@@ -35,23 +35,24 @@ import utils.SplashScreen;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author prath
  */
 public class LoginPanel extends javax.swing.JFrame {
-    
+
     private String usernameAdmin = "admin";
-     private String passwordAdmin = "admin123";
-     private ArrayList<Resident> residents = FileUtils.readResidents();
-     private ArrayList<CommunityAdmin> commadmin = FileUtils.readCommunityAdmins();
-     private ArrayList<Fireman> firemen = FileUtils.readFiremen();
-     private ArrayList<Police> police = FileUtils.readPolice();
-     private ArrayList<Doctor> doctor = FileUtils.readDoctors();
-     private UsersDirectory personDirectory = new UsersDirectory();
-     private CommunityDirectory communityDirectory = new CommunityDirectory();
-     private EmergencyServicesDirectory es = new EmergencyServicesDirectory();
+    private String passwordAdmin = "admin123";
+    private String mncAdmin = "mnc";
+    private String mncPassword = "mnc123";
+    private ArrayList<Resident> residents = FileUtils.readResidents();
+    private ArrayList<CommunityAdmin> commadmin = FileUtils.readCommunityAdmins();
+    private ArrayList<Fireman> firemen = FileUtils.readFiremen();
+    private ArrayList<Police> police = FileUtils.readPolice();
+    private ArrayList<Doctor> doctor = FileUtils.readDoctors();
+    private UsersDirectory personDirectory = new UsersDirectory();
+    private CommunityDirectory communityDirectory = new CommunityDirectory();
+    private EmergencyServicesDirectory es = new EmergencyServicesDirectory();
 
     /**
      * Creates new form LoginPanel
@@ -266,12 +267,12 @@ public class LoginPanel extends javax.swing.JFrame {
                         .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }
-    
+
     private void login() {
         String username = adminUsername.getText();
         String password = adminPassword.getText();
-        
-        for (Resident r: residents) {
+
+        for (Resident r : residents) {
             if (r.getUsername().equals(username)) {
                 if (r.getPassword().equals(password)) {
                     super.dispose();
@@ -284,8 +285,8 @@ public class LoginPanel extends javax.swing.JFrame {
                 return;
             }
         }
-        
-        for (CommunityAdmin c: commadmin) {
+
+        for (CommunityAdmin c : commadmin) {
             if (c.getUsername().equals(username)) {
                 if (c.getPassword().equals(password)) {
                     super.dispose();
@@ -298,8 +299,8 @@ public class LoginPanel extends javax.swing.JFrame {
                 return;
             }
         }
-        
-        for (Police p: police) {
+
+        for (Police p : police) {
             if (p.getUsername().equals(username)) {
                 if (p.getPassword().equals(password)) {
                     super.dispose();
@@ -312,8 +313,8 @@ public class LoginPanel extends javax.swing.JFrame {
                 return;
             }
         }
-        
-        for (Fireman f: firemen) {
+
+        for (Fireman f : firemen) {
             if (f.getUsername().equals(username)) {
                 if (f.getPassword().equals(password)) {
                     super.dispose();
@@ -326,8 +327,8 @@ public class LoginPanel extends javax.swing.JFrame {
                 return;
             }
         }
-        
-        for (Doctor d: doctor) {
+
+        for (Doctor d : doctor) {
             if (d.getUsername().equals(username)) {
                 if (d.getPassword().equals(password)) {
                     super.dispose();
@@ -340,7 +341,7 @@ public class LoginPanel extends javax.swing.JFrame {
                 return;
             }
         }
-        
+
         if (usernameAdmin.equals(username) && passwordAdmin.equals(password)) {
             super.dispose();
             AdminDashboard ad = new AdminDashboard();
@@ -350,8 +351,18 @@ public class LoginPanel extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(this, "Wrong Username or Password!!!");
         }
+        
+        if (mncAdmin.equals(username) && mncPassword.equals(password)) {
+            super.dispose();
+            MNCAdminDashboard ad = new MNCAdminDashboard();
+            ad.setVisible(true);
+            JOptionPane.showMessageDialog(this, "Welcome!");
+            return;
+        } else {
+            JOptionPane.showMessageDialog(this, "Wrong Username or Password!!!");
+        }
     }
-    
+
     /**
      * @param args the command line arguments
      */

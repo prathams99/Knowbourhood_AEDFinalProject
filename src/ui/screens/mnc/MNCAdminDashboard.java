@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ui.screens.admin;
+package ui.screens.mnc;
 
-import ui.screens.admin.AdminDashboard;
 import data.News;
 import data.Resident;
 import java.text.DateFormat;
@@ -18,25 +17,26 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import ui.login.LoginPanel;
 import utils.FileUtils;
 import utils.ImagePanel;
 
 /**
  *
- * @author jarvis
+ * @author prath
  */
-public class AdminPostbox extends javax.swing.JFrame {
-    
+public class MNCAdminDashboard extends javax.swing.JFrame {
+
     private ArrayList<Resident> r;
     private int i;
     private ArrayList<Resident> residentList = new ArrayList<Resident>();
     private ArrayList<News> newsList;
     private ArrayList<News> n;
-
+    
     /**
-     * Creates new form AdminPostbox
+     * Creates new form MNCAdminDashboard
      */
-    public AdminPostbox() {
+    public MNCAdminDashboard() {
         this.r = FileUtils.readResidents();
         this.n = FileUtils.readNews();
         initComponents();
@@ -54,35 +54,47 @@ public class AdminPostbox extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        communityName = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        residentTable = new javax.swing.JTable();
-        communityName1 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        newsTable = new javax.swing.JTable();
-        jLabel8 = new javax.swing.JLabel();
         mailId = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         subject = new javax.swing.JTextField();
+        communityName = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        residentTable = new javax.swing.JTable();
         message = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
+        communityName1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        newsTable = new javax.swing.JTable();
         jButton5 = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Enter E-mail ID:");
+
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Enter Subject:");
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 3, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(38, 26, 54));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Admin Dashboard");
+        jLabel1.setText("MNCAdmin Dashboard");
 
         communityName.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
         communityName.setForeground(new java.awt.Color(255, 255, 255));
         communityName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         communityName.setText("Members From All Communities");
+
+        jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Enter Message:");
 
         residentTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -111,10 +123,27 @@ public class AdminPostbox extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(residentTable);
 
+        message.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                messageActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Enter \"All\" if you want to send an e-mail to everyone.");
+
         communityName1.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
         communityName1.setForeground(new java.awt.Color(255, 255, 255));
         communityName1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         communityName1.setText("Knorbourhood Postbox");
+
+        jButton1.setText("Submit");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         newsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -143,46 +172,17 @@ public class AdminPostbox extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(newsTable);
 
-        jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 22)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setText("KNOWBOURHOOD POSTMAN");
-
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Enter E-mail ID:");
-
-        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Enter Subject:");
-
-        jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Enter Message:");
-
-        message.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                messageActionPerformed(evt);
-            }
-        });
-
-        jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Enter \"All\" if you want to send an e-mail to everyone or name of the community.");
-
-        jButton1.setText("Submit");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         jButton5.setText("<-- Back");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
             }
         });
+
+        jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 22)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setText("KNOWBOURHOOD POSTMAN");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -191,16 +191,10 @@ public class AdminPostbox extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1040, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 1166, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 1166, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 1153, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 1153, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(communityName, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(communityName1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(layout.createSequentialGroup()
@@ -218,8 +212,14 @@ public class AdminPostbox extends javax.swing.JFrame {
                                         .addGap(26, 26, 26)
                                         .addComponent(mailId, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel7)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(communityName, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(communityName1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(jButton5)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -230,7 +230,7 @@ public class AdminPostbox extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
+                        .addGap(22, 22, 22)
                         .addComponent(jButton5)))
                 .addGap(18, 18, 18)
                 .addComponent(communityName, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -291,17 +291,17 @@ public class AdminPostbox extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Message Sent!", "Sent", JOptionPane.INFORMATION_MESSAGE);
         saveNews();
         super.dispose();
-        AdminPostbox ad = new AdminPostbox();
+        MNCAdminDashboard ad = new MNCAdminDashboard();
         ad.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         super.dispose();
-        AdminDashboard ad = new AdminDashboard();
+        LoginPanel ad = new LoginPanel();
         ad.setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
-    
-     private void saveNews() {
+
+    private void saveNews() {
         Date date=java.util.Calendar.getInstance().getTime();
         News n = new News(subject.getText(), message.getText(), "All", date, mailId.getText());
         newsList = FileUtils.readNews();
@@ -374,7 +374,7 @@ public class AdminPostbox extends javax.swing.JFrame {
     }
     
     private void initImage() {
-        ImagePanel jPanel1 = new ImagePanel("src/assets/adminpostbox.jpg");
+        ImagePanel jPanel1 = new ImagePanel("src/assets/mnc.jpg");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -418,21 +418,20 @@ public class AdminPostbox extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AdminPostbox.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MNCAdminDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AdminPostbox.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MNCAdminDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AdminPostbox.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MNCAdminDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AdminPostbox.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MNCAdminDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AdminPostbox().setVisible(true);
+                new MNCAdminDashboard().setVisible(true);
             }
         });
     }
