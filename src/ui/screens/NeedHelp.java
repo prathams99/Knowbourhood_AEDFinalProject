@@ -213,7 +213,7 @@ public class NeedHelp extends javax.swing.JFrame {
         createHelp();
     }
     
-    private void createHelp() {
+     private void createHelp() {
         try {
             Help h = new Help(workTitle.getText(), workDescription.getText(), Long.parseLong(contactInput.getText()), FileUtils.convertStringToDate(dateInput.getText()), communityInput.getText(), mailInput.getText(), paidInput.getSelectedItem().equals("Paid") ? true : false);
             ArrayList<Help> residentsList = FileUtils.readHelp();
