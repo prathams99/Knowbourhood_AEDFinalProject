@@ -258,6 +258,22 @@ public class UpdateFireman extends javax.swing.JFrame {
         fmd.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void updateUser() {
+        if (index != -1) {
+            Fireman resident = r.get(index);
+            resident.setName(nameInput.getText());
+            resident.setContact(Long.parseLong(contactInput.getText()));
+            resident.setEmail(mailInput.getText());
+            resident.setUsername(usernameInput.getText());
+            r.set(index, resident);
+            FileUtils.writeFiremen(r);
+            JOptionPane.showMessageDialog(this, "Updated Succesfully.");
+            super.dispose();
+            FiremanManagement cm = new FiremanManagement();
+            cm.setVisible(true);
+        }
+    }
+    
     private void validateEmail() {
         if (!FileUtils.validateEmail(mailSearch.getText())) {
             JOptionPane.showMessageDialog(this, "Please enter a valid email id.");
