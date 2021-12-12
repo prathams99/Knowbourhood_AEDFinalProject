@@ -258,6 +258,14 @@ public class UpdateFireman extends javax.swing.JFrame {
         fmd.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void validateEmail() {
+        if (!FileUtils.validateEmail(mailSearch.getText())) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid email id.");
+            return;
+        }
+        searchResident();
+    }
+    
     private void searchResident() {
         String searchEmail = mailSearch.getText();
         String pattern = "MM-dd-yyyy";
