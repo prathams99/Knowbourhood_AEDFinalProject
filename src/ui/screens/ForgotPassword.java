@@ -22,6 +22,7 @@ public class ForgotPassword extends javax.swing.JFrame {
     private ArrayList<Resident> resident = new ArrayList<Resident>();
     private String otp;
     private int i = -1;
+    private int indexx = -1;
 
     /**
      * Creates new form ForgotPassword
@@ -248,7 +249,6 @@ public class ForgotPassword extends javax.swing.JFrame {
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         validateEmails();
-        sendMail();
     }//GEN-LAST:event_loginButtonActionPerformed
 
     private void adminUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminUsernameActionPerformed
@@ -278,7 +278,16 @@ public class ForgotPassword extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void validateEmails() {
-//        Array
+        ArrayList<Resident> resident = FileUtils.readResidents();
+        for (int i = 0; i < resident.size(); i++) {
+            if (resident.get(i).equals(adminUsername.getText())) {
+                indexx = i;
+                sendMail();
+            }
+        }
+        if (indexx == -1) {
+            JOptionPane.showMessageDialog(this, "You are not a member of Knowbourhood.");
+        }
     }
     
     private void updatePassword() {
