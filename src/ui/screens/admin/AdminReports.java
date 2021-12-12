@@ -5,6 +5,7 @@
  */
 package ui.screens.admin;
 
+import data.News;
 import ui.screens.admin.AdminDashboard;
 import data.Report;
 import data.Resident;
@@ -13,6 +14,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Properties;
 import javax.mail.Message;
 import javax.mail.PasswordAuthentication;
@@ -40,6 +42,7 @@ public class AdminReports extends javax.swing.JFrame {
     private ArrayList<Resident> residents;
     private ArrayList<Resident> residentsFound;
     private ArrayList<Report> report;
+    private ArrayList<News> newsAdded;
     
     /**
      * Creates new form AdminReports
@@ -412,6 +415,7 @@ public class AdminReports extends javax.swing.JFrame {
         }
         reportFound.remove(indexFound);
         FileUtils.writeReport(reportFound);
+        saveNews();
         super.dispose();
         AdminReports cd = new AdminReports();
         cd.setVisible(true);
@@ -479,6 +483,7 @@ public class AdminReports extends javax.swing.JFrame {
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         sendMailToCommunity();
+        saveNewsForCommunity();
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
@@ -487,6 +492,22 @@ public class AdminReports extends javax.swing.JFrame {
         ad.setVisible(true);
     }//GEN-LAST:event_jButton9ActionPerformed
 
+    private void saveNewsForCommunity() {
+        Date date=java.util.Calendar.getInstance().getTime();
+        News n = new News(subjectTitle.getText(), messageTitle.getText(), communityTitle.getText(), date, "All");
+        newsAdded = FileUtils.readNews();
+        newsAdded.add(n);
+        FileUtils.writeNews(newsAdded);
+    }
+    
+    private void saveNews() {
+        Date date=java.util.Calendar.getInstance().getTime();
+        News n = new News(subjectTitle.getText(), messageTitle.getText(), "All", date, "All");
+        newsAdded = FileUtils.readNews();
+        newsAdded.add(n);
+        FileUtils.writeNews(newsAdded);
+    }
+    
     private void sendMailToCommunity() {
         ArrayList<Resident> res = FileUtils.readResidents();
         String username = "knowbourhood@gmail.com";

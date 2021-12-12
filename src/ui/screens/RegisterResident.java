@@ -7,6 +7,8 @@ package ui.screens;
 
 import data.Resident;
 import java.awt.Color;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -507,6 +509,15 @@ public class RegisterResident extends javax.swing.JFrame {
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
+        
+        contactInput.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent e) {
+                if (contactInput.getText().length() >= 10) // limit textfield to 4 characters
+                {
+                    e.consume();
+                }
+            }
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

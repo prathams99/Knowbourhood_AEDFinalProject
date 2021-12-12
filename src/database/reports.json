@@ -1,14 +1,6 @@
 [
   {
     "name": "Vivek Sharma",
-    "subject": "Hooded figure suspected to be a robber",
-    "message": "I was being followed by a man in hoodie",
-    "community": "Mission Hill",
-    "date": "Dec 27, 1998, 12:00:00 AM",
-    "contact": 0
-  },
-  {
-    "name": "Vivek Sharma",
     "subject": "weather",
     "message": "Qui sta cadendo la neve di Roxbury Mama",
     "community": "Roxbury",
@@ -83,14 +75,6 @@
     "name": "Prathamesh Sahasrabuddhe",
     "subject": "Snow",
     "message": "chat tapak rahi thi marammat kardi",
-    "community": "Roxbury",
-    "date": "Dec 4, 2021, 10:37:55 PM",
-    "contact": 0
-  },
-  {
-    "name": "Prathamesh Sahasrabuddhe",
-    "subject": "Snow",
-    "message": "Qui sta cadendo la neve di Roxbury Mama",
     "community": "Roxbury",
     "date": "Dec 4, 2021, 10:37:55 PM",
     "contact": 0

@@ -43,7 +43,7 @@
   },
   {
     "subject": "New Biden US",
-    "message": "New Biden US Attorney Rollins threatens reporters in tirade, resurfaced video shows: 'You know what I'll do?'",
+    "message": "New Biden US Attorney Rollins threatens reporters in tirade, resurfaced video shows: \u0027You know what I\u0027ll do?\u0027",
     "community": "All",
     "date": "Dec 5, 2021, 7:42:53 PM",
     "email": "All"
@@ -71,7 +71,7 @@
   },
   {
     "subject": "Fox news",
-    "message": "Fox News host suggests Christmas tree fire could have been 'a hate crime' against network",
+    "message": "Fox News host suggests Christmas tree fire could have been \u0027a hate crime\u0027 against network",
     "community": "All",
     "date": "Dec 6, 2021, 12:23:50 PM",
     "email": "All"
@@ -102,6 +102,20 @@
     "message": "AAg lagi hai bhai",
     "community": "All",
     "date": "Dec 7, 2021, 3:47:40 PM",
+    "email": "All"
+  },
+  {
+    "subject": "weather",
+    "message": "Qui sta cadendo la neve di Roxbury Mama",
+    "community": "All",
+    "date": "Dec 12, 2021, 6:27:44 PM",
+    "email": "All"
+  },
+  {
+    "subject": "Hooded figure suspected to be a robber",
+    "message": "I was being followed by a man in hoodie",
+    "community": "Mission Hill",
+    "date": "Dec 12, 2021, 6:28:04 PM",
     "email": "All"
   }
 ]
