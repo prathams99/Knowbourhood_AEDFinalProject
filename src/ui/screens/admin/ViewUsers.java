@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ui.screens;
+package ui.screens.admin;
 
+import ui.screens.admin.UserManagement;
 import data.Resident;
 import data.Users;
 import java.awt.Image;

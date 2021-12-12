@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ui.screens;
+package ui.screens.admin;
 
+import ui.screens.admin.AdminDashboard;
 import data.Report;
 import data.Resident;
 import java.awt.Desktop;

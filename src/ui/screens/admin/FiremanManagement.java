@@ -3,8 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ui.screens;
+package ui.screens.admin;
 
+import ui.screens.admin.DeleteFireman;
+import ui.screens.admin.CreateFireman;
+import ui.screens.admin.AdminDashboard;
 import utils.ImagePanel;
 
 /**

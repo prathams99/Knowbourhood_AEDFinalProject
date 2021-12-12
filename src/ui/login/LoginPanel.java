@@ -16,7 +16,7 @@ import java.awt.font.TextAttribute;
 import java.util.ArrayList;
 import java.util.Map;
 import javax.swing.JOptionPane;
-import ui.screens.AdminDashboard;
+import ui.screens.admin.AdminDashboard;
 import ui.screens.CommAdminDashboard;
 import ui.screens.CommAdminPostbox;
 import ui.screens.DoctorDashboard;
