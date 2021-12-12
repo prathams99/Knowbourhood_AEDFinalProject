@@ -9,7 +9,8 @@ package data;
  * @author jarvis
  */
 public class Admin {
-     private String username;
+
+    private String username;
     private String password;
 
     public String getUsername() {
@@ -37,5 +38,5 @@ public class Admin {
     public String toString() {
         return "Admin{" + "username=" + username + ", password=" + password + '}';
     }
-    
+
 }

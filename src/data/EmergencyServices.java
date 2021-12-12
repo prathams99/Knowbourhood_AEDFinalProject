@@ -11,7 +11,8 @@ import java.util.ArrayList;
  * @author jarvis
  */
 public class EmergencyServices {
-     private ArrayList<Police> police;
+    
+    private ArrayList<Police> police;
     private ArrayList<Fireman> fireman;
     private ArrayList<Doctor> doctor;
 

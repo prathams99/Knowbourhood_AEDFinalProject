@@ -9,6 +9,8 @@ import data.Doctor;
 import data.EmergencyServices;
 import data.Fireman;
 import data.Help;
+import data.MNC;
+import data.MNCReperesentative;
 import data.News;
 import data.Police;
 import data.Report;
@@ -272,6 +274,30 @@ public class FileUtils {
         writeFile("src/database/es-enterprise.json", g.toJson(doctorList));
     }
 
+    public static ArrayList<MNC> readMNC() {
+        Gson g = new Gson();
+        String json = FileUtils.readFile("src/database/mnc-enterprise.json");
+        return g.fromJson(json, new TypeToken<ArrayList<MNC>>() {
+        }.getType());
+    }
+
+    public static void writeMNC(ArrayList<MNC> doctorList) {
+        Gson g = new GsonBuilder().setPrettyPrinting().create();
+        writeFile("src/database/mnc-enterprise.json", g.toJson(doctorList));
+    }
+    
+    public static ArrayList<MNCReperesentative> readMNCR() {
+        Gson g = new Gson();
+        String json = FileUtils.readFile("src/database/mncr.json");
+        return g.fromJson(json, new TypeToken<ArrayList<MNCReperesentative>>() {
+        }.getType());
+    }
+
+    public static void writeMNCR(ArrayList<MNCReperesentative> doctorList) {
+        Gson g = new GsonBuilder().setPrettyPrinting().create();
+        writeFile("src/database/mncr.json", g.toJson(doctorList));
+    }
+    
     public static ArrayList<Help> readHelp() {
         Gson g = new Gson();
         String json = FileUtils.readFile("src/database/help.json");

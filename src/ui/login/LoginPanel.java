@@ -6,6 +6,8 @@ import data.Doctor;
 import data.EmergencyServices;
 import data.EmergencyServicesDirectory;
 import data.Fireman;
+import data.MNCDirectory;
+import data.MNCReperesentative;
 import data.Police;
 import data.Resident;
 import data.UsersDirectory;
@@ -24,7 +26,8 @@ import ui.screens.ForgotPassword;
 import ui.screens.NeedHelp;
 import ui.screens.police.PoliceDashboard;
 import ui.screens.RegisterResident;
-import ui.screens.mnc.MNCAdminDashboard;
+import ui.screens.mnc.MNCAdminPostbox;
+import ui.screens.mnc.MNCDashboard;
 import ui.screens.resident.ResidentDashboard;
 import utils.FileUtils;
 import utils.ImagePanel;
@@ -50,9 +53,11 @@ public class LoginPanel extends javax.swing.JFrame {
     private ArrayList<Fireman> firemen = FileUtils.readFiremen();
     private ArrayList<Police> police = FileUtils.readPolice();
     private ArrayList<Doctor> doctor = FileUtils.readDoctors();
+    private ArrayList<MNCReperesentative> mncr = FileUtils.readMNCR();
     private UsersDirectory personDirectory = new UsersDirectory();
     private CommunityDirectory communityDirectory = new CommunityDirectory();
     private EmergencyServicesDirectory es = new EmergencyServicesDirectory();
+    private MNCDirectory mncd = new MNCDirectory();
 
     /**
      * Creates new form LoginPanel
@@ -341,6 +346,20 @@ public class LoginPanel extends javax.swing.JFrame {
                 return;
             }
         }
+        
+        for (MNCReperesentative m : mncr) {
+            if (m.getUsername().equals(username)) {
+                if (m.getPassword().equals(password)) {
+                    super.dispose();
+                    MNCAdminPostbox mad = new MNCAdminPostbox();
+                    mad.setVisible(true);
+                    JOptionPane.showMessageDialog(this, "Welcome!");
+                } else {
+                    JOptionPane.showMessageDialog(this, "Wrong Username or Password!!!");
+                }
+                return;
+            }
+        }
 
         if (usernameAdmin.equals(username) && passwordAdmin.equals(password)) {
             super.dispose();
@@ -354,7 +373,7 @@ public class LoginPanel extends javax.swing.JFrame {
         
         if (mncAdmin.equals(username) && mncPassword.equals(password)) {
             super.dispose();
-            MNCAdminDashboard ad = new MNCAdminDashboard();
+            MNCDashboard ad = new MNCDashboard();
             ad.setVisible(true);
             JOptionPane.showMessageDialog(this, "Welcome!");
             return;

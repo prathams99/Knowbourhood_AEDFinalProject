@@ -1,6 +1,7 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package data;
 
@@ -15,41 +16,33 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import utils.FileUtils;
+
 /**
  *
- * @author viveksharma
+ * @author prath
  */
-public class CommunityDirectory {
+public class MNCDirectory {
     
-    private static CommunityDirectory personDirectory;
-    public static ArrayList<Community> person;
+    private static MNCDirectory personDirectory;
+    public static ArrayList<MNC> person;
 
-    public CommunityDirectory() {
+    public MNCDirectory() {
         person = new ArrayList<>();
-        ArrayList<Resident> re = FileUtils.readResidents();
-        ArrayList<CommunityAdmin> ca = FileUtils.readCommunityAdmins();
-        Community person1 = new Community(re, ca);     
+        ArrayList<MNCReperesentative> re = FileUtils.readMNCR();
+        MNC person1 = new MNC(re);     
         person.add(person1);
-        FileUtils.writeCommunity(person);
+        FileUtils.writeMNC(person);
         Gson g = new Gson();
-        String json = FileUtils.readFile("src/database/community-enterprise.json");
-        person = g.fromJson(json, new TypeToken<List<Community>>() {
+        String json = FileUtils.readFile("src/database/mnc-enterprise.json");
+        person = g.fromJson(json, new TypeToken<List<MNC>>() {
         }.getType());
         System.out.println("HUEHEUE" + "LALALLA" + person.toString());    
     }
 
-    private ArrayList<Resident> getResident() {
-        ArrayList<Resident> resident = FileUtils.readResidents();
+    private ArrayList<MNCReperesentative> getResident() {
+        ArrayList<MNCReperesentative> resident = FileUtils.readMNCR();
         for (int i = 0; i < resident.size(); i++) {
             return resident;
-        }
-        return null;
-    }
-
-    private ArrayList<CommunityAdmin> getCAdmin() {
-        ArrayList<CommunityAdmin> ca = FileUtils.readCommunityAdmins();
-        for (int i = 0; i < ca.size(); i++) {
-            return ca;
         }
         return null;
     }
@@ -65,13 +58,13 @@ public class CommunityDirectory {
         return null;
     }
 
-    public List<Community> getPersonList() {
+    public List<MNC> getPersonList() {
         return person;
     }
 
     public List<Community> getPatientList() {
         ArrayList<Community> newPatient = new ArrayList<Community>();
-        for (Community p : person) {
+        for (MNC p : person) {
         }
         return newPatient;
     }

@@ -21,7 +21,8 @@ import utils.FileUtils;
  * @author jarvis
  */
 public class EmergencyServicesDirectory {
-      private static EmergencyServicesDirectory personDirectory;
+    
+    private static EmergencyServicesDirectory personDirectory;
     public static ArrayList<EmergencyServices> person;
 
     public EmergencyServicesDirectory() {

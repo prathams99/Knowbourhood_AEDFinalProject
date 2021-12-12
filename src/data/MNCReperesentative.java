@@ -1,6 +1,7 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package data;
 
@@ -8,13 +9,13 @@ import java.util.Date;
 
 /**
  *
- * @author jarvis
+ * @author prath
  */
-public class CommunityAdmin {
+public class MNCReperesentative {
+    
     private String name;
     private Date dob;
     private long contact;
-    private String communityName;
     private String username;
     private String password;
     private String email;
@@ -43,14 +44,6 @@ public class CommunityAdmin {
         this.contact = contact;
     }
 
-    public String getCommunityName() {
-        return communityName;
-    }
-
-    public void setCommunityName(String communityName) {
-        this.communityName = communityName;
-    }
-
     public String getUsername() {
         return username;
     }
@@ -75,11 +68,10 @@ public class CommunityAdmin {
         this.email = email;
     }
 
-    public CommunityAdmin(String name, Date dob, long contact, String communityName, String username, String password, String email) {
+    public MNCReperesentative(String name, Date dob, long contact, String username, String password, String email) {
         this.name = name;
         this.dob = dob;
         this.contact = contact;
-        this.communityName = communityName;
         this.username = username;
         this.password = password;
         this.email = email;
@@ -87,7 +79,7 @@ public class CommunityAdmin {
 
     @Override
     public String toString() {
-        return "CommunityAdmin{" + "name=" + name + ", dob=" + dob + ", contact=" + contact + ", communityName=" + communityName + ", username=" + username + ", password=" + password + ", email=" + email + '}';
+        return "CommunityAdmin{" + "name=" + name + ", dob=" + dob + ", contact=" + contact + ", username=" + username + ", password=" + password + ", email=" + email + '}';
     }
     
 }

@@ -25,7 +25,7 @@ import utils.ImagePanel;
  *
  * @author prath
  */
-public class MNCAdminDashboard extends javax.swing.JFrame {
+public class MNCAdminPostbox extends javax.swing.JFrame {
 
     private ArrayList<Resident> r;
     private int i;
@@ -36,7 +36,7 @@ public class MNCAdminDashboard extends javax.swing.JFrame {
     /**
      * Creates new form MNCAdminDashboard
      */
-    public MNCAdminDashboard() {
+    public MNCAdminPostbox() {
         this.r = FileUtils.readResidents();
         this.n = FileUtils.readNews();
         initComponents();
@@ -75,25 +75,21 @@ public class MNCAdminDashboard extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Enter E-mail ID:");
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Enter Subject:");
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 3, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(38, 26, 54));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("MNCAdmin Dashboard");
+        jLabel1.setText("MNCAdmin Postbox");
 
         communityName.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
-        communityName.setForeground(new java.awt.Color(255, 255, 255));
         communityName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         communityName.setText("Members From All Communities");
 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Enter Message:");
 
         residentTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -134,7 +130,6 @@ public class MNCAdminDashboard extends javax.swing.JFrame {
         jLabel7.setText("Enter \"All\" if you want to send an e-mail to everyone.");
 
         communityName1.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
-        communityName1.setForeground(new java.awt.Color(255, 255, 255));
         communityName1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         communityName1.setText("Knorbourhood Postbox");
 
@@ -180,7 +175,6 @@ public class MNCAdminDashboard extends javax.swing.JFrame {
         });
 
         jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 22)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("KNOWBOURHOOD POSTMAN");
 
@@ -291,7 +285,7 @@ public class MNCAdminDashboard extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Message Sent!", "Sent", JOptionPane.INFORMATION_MESSAGE);
         saveNews();
         super.dispose();
-        MNCAdminDashboard ad = new MNCAdminDashboard();
+        MNCAdminPostbox ad = new MNCAdminPostbox();
         ad.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -418,20 +412,21 @@ public class MNCAdminDashboard extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MNCAdminDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MNCAdminPostbox.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MNCAdminDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MNCAdminPostbox.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MNCAdminDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MNCAdminPostbox.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MNCAdminDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MNCAdminPostbox.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MNCAdminDashboard().setVisible(true);
+                new MNCAdminPostbox().setVisible(true);
             }
         });
     }
