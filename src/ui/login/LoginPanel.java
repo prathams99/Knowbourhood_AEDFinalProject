@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
 import ui.screens.admin.AdminDashboard;
 import ui.screens.commadmin.CommAdminDashboard;
 import ui.screens.commadmin.CommAdminPostbox;
-import ui.screens.DoctorDashboard;
+import ui.screens.doctor.DoctorDashboard;
 import ui.screens.FireManDashboard;
 import ui.screens.ForgotPassword;
 import ui.screens.NeedHelp;
