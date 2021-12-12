@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ui.screens;
+package ui.screens.commadmin;
 
 import data.CommunityAdmin;
 import ui.login.LoginPanel;
