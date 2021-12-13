@@ -376,9 +376,7 @@ public class VolunteerDashboard extends javax.swing.JFrame {
             userNews.add(newsList.get(i));
             totalEncounters++;
         }
-        for (Help e : userNews) {
-            System.out.println(e.toString());
-        }
+
         if (index == -1) {
             JOptionPane.showMessageDialog(this, "No requests!");
         } else {
