@@ -240,6 +240,7 @@ public class LoginPanel extends javax.swing.JFrame {
         nh.setVisible(true);
     }//GEN-LAST:event_jLabel6MouseClicked
 
+    @SuppressWarnings("unchecked")
     private void initImage() {
         Font font = jLabel5.getFont();
         Map attributes = font.getAttributes();
@@ -275,7 +276,7 @@ public class LoginPanel extends javax.swing.JFrame {
 
     private void login() {
         String username = adminUsername.getText();
-        String password = adminPassword.getText();
+        String password = String.valueOf(adminPassword.getPassword());
 
         for (Resident r : residents) {
             if (r.getUsername().equals(username)) {
@@ -407,10 +408,8 @@ public class LoginPanel extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new SplashScreen().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new SplashScreen().setVisible(true);
         });
     }
 
