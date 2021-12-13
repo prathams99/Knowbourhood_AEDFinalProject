@@ -1,5 +1,5 @@
-Knowbourhood - AED Final Password
-=================================
+Knowbourhood - AED Final Project
+================================
 
 Team Members
 ------------
@@ -21,7 +21,7 @@ Purpose
 
 2) To promote mindfulness and help people by reporting about the surroundings.
 
-3 )Our application can be implemented on “GLOBAL ISSUE” we can’t ignore i.e Women safety. On our application people get alert mail to avoid taking unsafe and gloomy route.
+3) Our application can be implemented on “GLOBAL ISSUE” we can’t ignore i.e Women safety. On our application people get alert mail to avoid taking unsafe and gloomy route.
 
 4) People can report about COVID-19 cases, accidents near them, to notify all community and doctors.
 
