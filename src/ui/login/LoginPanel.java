@@ -367,11 +367,7 @@ public class LoginPanel extends javax.swing.JFrame {
             ad.setVisible(true);
             JOptionPane.showMessageDialog(this, "Welcome!");
             return;
-        } else {
-            JOptionPane.showMessageDialog(this, "Wrong Username or Password!!!");
-        }
-        
-        if (mncAdmin.equals(username) && mncPassword.equals(password)) {
+        } else if (mncAdmin.equals(username) && mncPassword.equals(password)) {
             super.dispose();
             MNCDashboard ad = new MNCDashboard();
             ad.setVisible(true);
