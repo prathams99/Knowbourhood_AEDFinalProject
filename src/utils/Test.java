@@ -57,7 +57,7 @@ public class Test {
                 cvFlip(img, img, 1);// l-r = 90_degrees_steps_anti_clockwise
 
                 //save
-                cvSaveImage("images" + File.separator + username + ".jpg", img);
+                cvSaveImage("src/ui/screens/admin/images" + File.separator + username + ".jpg", img);
 
                 canvas.showImage(converter.convert(img));
 

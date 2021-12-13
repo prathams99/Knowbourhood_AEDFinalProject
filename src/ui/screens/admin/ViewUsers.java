@@ -374,7 +374,7 @@ public class ViewUsers extends javax.swing.JFrame {
                 usernameTitle.setText(r.get(i).getUsername());
                 // UserProfile photo
                 try {
-                    bufferedImage = ImageIO.read(new File("C:\\Users\\prath\\Documents\\NetBeansProjects\\Knowbourhood\\images\\" + r.get(i).getUsername() + ".jpg")); // path is your file or image path
+                    bufferedImage = ImageIO.read(new File("images\\" + r.get(i).getUsername() + ".jpg")); // path is your file or image path
                     dimg = bufferedImage.getScaledInstance(photoLabel.getWidth(), photoLabel.getHeight(),
                             Image.SCALE_SMOOTH);
                     // profilePhoto.setText(file_name);
