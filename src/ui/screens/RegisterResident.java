@@ -39,7 +39,7 @@ import org.bytedeco.opencv.opencv_core.IplImage;
 import ui.login.LoginPanel;
 import utils.FileUtils;
 import utils.LoadingScreen;
-import utils.Test;
+import utils.Camera;
 
 /**
  *
@@ -341,7 +341,7 @@ public class RegisterResident extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
     
     private void click() {
-        Test test = new Test();
+        Camera test = new Camera();
         test.run(usernameInput.getText());
     }
     

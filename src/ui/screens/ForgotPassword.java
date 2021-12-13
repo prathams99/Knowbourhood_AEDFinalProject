@@ -279,9 +279,9 @@ public class ForgotPassword extends javax.swing.JFrame {
 
     private void validateEmails() {
         ArrayList<Resident> resident = FileUtils.readResidents();
-        for (int i = 0; i < resident.size(); i++) {
-            if (resident.get(i).equals(adminUsername.getText())) {
-                indexx = i;
+        for (int r = 0; r < resident.size(); r++) {
+            if (resident.get(r).getEmail().equals(adminUsername.getText())) {
+                indexx = r;
                 sendMail();
             }
         }

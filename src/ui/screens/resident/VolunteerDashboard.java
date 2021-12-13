@@ -11,6 +11,7 @@ import data.Volunteer;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import ui.screens.admin.UserManagement;
 import utils.FileUtils;
@@ -87,6 +88,7 @@ public class VolunteerDashboard extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         encounterNumber = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -252,25 +254,39 @@ public class VolunteerDashboard extends javax.swing.JFrame {
                 .addGap(35, 35, 35))
         );
 
+        jButton5.setText("<-- Back");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(residentName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1171, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(residentName1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(residentName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(772, 772, 772)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(22, Short.MAX_VALUE)
+                .addComponent(jButton5)
+                .addGap(18, 18, 18)
+                .addComponent(residentName1, javax.swing.GroupLayout.PREFERRED_SIZE, 1051, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(residentName1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(residentName1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(jButton5)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(residentName)
                 .addGap(108, 108, 108)
@@ -320,10 +336,16 @@ public class VolunteerDashboard extends javax.swing.JFrame {
         sendMail();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        super.dispose();
+        ResidentDashboard lp = new ResidentDashboard(r);
+        lp.setVisible(true);
+    }//GEN-LAST:event_jButton5ActionPerformed
+
     private void saveVolunteer() {
         try {
             Resident rr = new Resident(r.getName(), r.getDob(), r.getContact(), r.getAddress(), r.getCommunity(), r.getUsername(), "ENCRYPTED", r.getEmail());
-            Help h = new Help(workTitle.getText(), workDescription.getText(), Long.parseLong(contactInput.getText()), FileUtils.convertStringToDate(dateInput.getText()), communityInput.getText(), mailInput.getText(), paidInput.getText().equals("Paid") ? true : false);
+            Help h = new Help(workTitle.getText(), workDescription.getText(), Long.parseLong(contactInput.getText()), new Date(), communityInput.getText(), mailInput.getText(), paidInput.getText().equals("Paid") ? true : false);
             Volunteer v = new Volunteer(rr , h);
             ArrayList<Volunteer> residentsList = FileUtils.readVolunteer();
             residentsList.add(v);
@@ -444,6 +466,7 @@ public class VolunteerDashboard extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;

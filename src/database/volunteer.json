@@ -1,0 +1,23 @@
+[
+  {
+    "resident": {
+      "name": "Vivek Sharma ",
+      "dob": "Dec 27, 1998, 12:00:00 AM",
+      "contact": 9876543210,
+      "address": "1575 Tremont Street, Boston, MA - 02120",
+      "community": "Mission Main",
+      "username": "vivek",
+      "password": "ENCRYPTED",
+      "email": "sharma.viv@northeastern.edu"
+    },
+    "help": {
+      "workTitle": "Need labor for fencing",
+      "workDescription": "Fencing - hard work",
+      "contact": 9897731487,
+      "date": "Dec 12, 2021, 9:28:54 PM",
+      "community": "Roxbury",
+      "email": "chouhan.ro@northeastern.edu",
+      "paid": true
+    }
+  }
+]

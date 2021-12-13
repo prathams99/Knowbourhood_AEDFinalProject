@@ -19,7 +19,7 @@
   },
   {
     "workTitle": "Shop for Old",
-    "workDescription": "I'm 70 years old, Need someone to pickup my grocries bags",
+    "workDescription": "I\u0027m 70 years old, Need someone to pickup my grocries bags",
     "contact": 9898989812,
     "date": "Dec 17, 2021, 12:00:00 AM",
     "community": "Roxbury",
@@ -87,6 +87,15 @@
     "date": "Dec 18, 2021, 12:00:00 AM",
     "community": "Misson Main",
     "email": "help9@gmail.com",
+    "paid": true
+  },
+  {
+    "workTitle": "Need labor for fencing",
+    "workDescription": "Fencing - hard work",
+    "contact": 9897731487,
+    "date": "Feb 14, 2031, 12:00:00 AM",
+    "community": "Roxbury",
+    "email": "chouhan.ro@northeastern.edu",
     "paid": true
   }
 ]

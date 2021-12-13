@@ -20,7 +20,7 @@ import static org.bytedeco.opencv.helper.opencv_imgcodecs.cvSaveImage;
  *
  * @author prath
  */
-public class Test {
+public class Camera {
 
     //final int INTERVAL = 5000;///you may use interval
     CanvasFrame canvas = new CanvasFrame("Web Cam");
@@ -34,13 +34,13 @@ public class Test {
         this.flag = flag;
     }
 
-    public Test() {
+    public Camera() {
         canvas.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
     }
 
     public void run(String username) {
 
-        new File("images").mkdir();
+        new File("src/ui/screens/admin/images").mkdir();
 
         FrameGrabber grabber = new OpenCVFrameGrabber(0); // 1 for next camera
         OpenCVFrameConverter.ToIplImage converter = new OpenCVFrameConverter.ToIplImage();
@@ -84,7 +84,7 @@ public class Test {
     }
     
     public static void main(String[] args) {
-        Test gs = new Test();
+        Camera gs = new Camera();
         Thread th = new Thread((Runnable) gs);
         th.start();
     }
